@@ -1,12 +1,12 @@
 import java.util.HashMap;
 
 public class FileManager {
-	HashMap<String, QuickLink> links;
+	private static HashMap<String, QuickLink> links;
 	
-	// Take in a HashMap provided by Runner to store the QuickLinks
-	public FileManager(HashMap<String, QuickLink> runnerLinks)
+	// Constructor calls ImportLinks and CreateDefaultFile if needed
+	public FileManager()
 	{
-		links = runnerLinks;
+		return;
 	}
 	
 	// Adds a link with the characteristics Name, Link, Username, and Password as
@@ -26,6 +26,11 @@ public class FileManager {
 	public static boolean addInfo(String name, String user, String pass)
 	{
 		return false;
+	}
+	
+	public static HashMap<String, QuickLink> getHashMap()
+	{
+		return links;
 	}
 	
 	// Reads through the file and imports all links in the file to QuickLinks, stored in
