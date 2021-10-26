@@ -28,6 +28,7 @@ public class FileManager {
 		return false;
 	}
 	
+	// Returns the HashMap of QuickLinks
 	public static HashMap<String, QuickLink> getHashMap()
 	{
 		return links;
