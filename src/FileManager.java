@@ -2,11 +2,12 @@ import java.util.HashMap;
 
 public class FileManager {
 	private static HashMap<String, QuickLink> links;
+	private static final int LINES_PER_LINK = 4;
 	
 	// Constructor calls ImportLinks and CreateDefaultFile if needed
 	public FileManager()
 	{
-		return;
+		links = new HashMap<String, QuickLink>();
 	}
 	
 	// Adds a link with the characteristics Name, Link, Username, and Password as
