@@ -5,7 +5,7 @@ public class NewQuickLink {
 	// the quick link into files. 
 	// input: Name, URL, username, and password
 	// output: returns a QuickLinks with the inputted Name, URL, username, and password
-	public static QuickLinks createNewQuickLink() {
+	public static QuickLinks createNewQuickLink(String Name, String URL, String username, String Password) {
 		return null;
 	}
 }
