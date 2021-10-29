@@ -7,7 +7,7 @@ public class FileManager {
 	private static File file;
 		
 	// Purpose: Gets the next set of LINES_PER_SET lines and returns them in an ArrayList to
-	// LinkManager
+	// LinkManager 
 	// Input: None
 	// Output: ArrayList of the next LINES_PER_SET lines
 	public static ArrayList<String> getNextSet()

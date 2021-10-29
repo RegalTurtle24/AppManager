@@ -9,7 +9,7 @@ public class LinkManager {
 	}
 	
 	// Purpose: Adds a link with the characteristics Name, Link, Username, and Password as
-	// given by the parameters
+	// given by the parameters 
 	// Input: QuickLinks
 	// Output: Returns true if there was a link with name already, and false if it was a new
 	// name
