@@ -1,15 +1,15 @@
 
 public class DesktopManager {
-	public static void openSkywardGrading() {
-		return;
-	}
-	public static void openSkywardAttendance() {
+	public static void openSkywardGrading(QuickLinks skywardLink) {
 		
 	}
-	public static void openTeamsAssignments() {
+	public static void openSkywardAttendance(QuickLinks skywardLink) {
 		
 	}
-	public static void openCustumQuicklink() {
+	public static void openTeamsAssignments(QuickLinks teamsLink) {
+		
+	}
+	public static void loginCustomQuicklink(QuickLinks cutomLink) {
 		
 	}
 }
