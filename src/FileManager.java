@@ -1,6 +1,8 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,6 +10,7 @@ public class FileManager {
 	private static final int LINES_PER_SET = 4;
 	private static Scanner sc;
 	private static File info;
+	private static FileWriter fw;
 	
 	// Purpose: Gets the next set of LINES_PER_SET lines and returns them in an ArrayList to
 	// LinkManager
@@ -15,21 +18,28 @@ public class FileManager {
 	// Output: ArrayList of the next LINES_PER_SET lines
 	public static ArrayList<String> getNextSet()
 	{
-		if(info == null) {
-			info = new File("infoFile.txt");
-		}
-		if(sc == null) {
-			sc = new Scanner("infoFile");
-		}
-		ArrayList<String> set = new ArrayList<String>();
-		for(int i = 0 ; i < LINES_PER_SET ; i++) {
-			if (sc.hasNext()) {
-				set.add(sc.nextLine());
-			} else {
-				return null;
+		try {
+			if(info == null) {
+				info = new File("infoFile.txt");
+				if(info.createNewFile()) {
+					createDefaultFile();
+				}
 			}
+			if(sc == null) {
+				sc = new Scanner(info);
+			}
+			ArrayList<String> set = new ArrayList<String>();
+			for(int i = 0 ; i < LINES_PER_SET ; i++) {
+				if (sc.hasNext()) {
+					set.add(sc.nextLine());
+				} else {
+					return null;
+				}
+			}
+			return set;
+		} catch (IOException e) {
+			return null;
 		}
-		return set;
 	}
 	
 	// Purpose: Checks if there is a file in the folder already, and if there is not it will create
@@ -56,5 +66,17 @@ public class FileManager {
 	public static int getNumSets()
 	{
 		return 0;
+	}
+	
+	public static void main(String[] args) {
+		info = new File("infoFile.txt");
+		try {
+			info.createNewFile();
+			fw = new FileWriter(info, true);
+			fw.write("hello world");
+			fw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
