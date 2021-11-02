@@ -1,11 +1,17 @@
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Scanner;
 
 public class FileManager {
 	private static final int LINES_PER_SET = 4;
-	private static File file;
-		
+	private static Scanner sc;
+	private static File info;
+	private static FileWriter fw;
+	
 	// Purpose: Gets the next set of LINES_PER_SET lines and returns them in an ArrayList to
 	// LinkManager
 	// Input: None
@@ -19,9 +25,45 @@ public class FileManager {
 	// a file and load it with the default links
 	// Input: None
 	// Output: If there is no file, create file
-	public static boolean createDefaultFile()
+	public static boolean createDefaultFile(File f)
 	{
-		return false;
+		try {
+//			createNewFile tries to create a new file, if it does, returns true, if not, returns
+//			false
+			if(f.createNewFile()) {
+				FileWriter fw = new FileWriter(f, true);
+//				name
+				fw.write("Skyward Grades\n");
+//				URL
+				fw.write("https://www2.saas.wa-k12.net/scripts/cgiip.exe/WService=wlkwashs71/fwemnu01.w\n");
+//				username
+				fw.write("\n");
+//				password
+				fw.write("\n");
+				
+				fw.write("Skyward Attendance\n");
+				fw.write("\n");
+				fw.write("\n");
+				fw.write("\n");
+				
+				fw.write("Frontline Absence Management\n");
+				fw.write("\n");
+				fw.write("\n");
+				fw.write("\n");
+				
+				fw.write("Frontline Evaluations\n");
+				fw.write("\n");
+				fw.write("\n");
+				fw.write("\n");
+				
+				fw.close();
+				return true;
+			} else {
+				return false;
+			}
+		} catch (IOException e) {
+			return false;
+		}
 	}
 	
 	// Purpose: Write a new set of information at the bottom of the file or where 1st parameter
