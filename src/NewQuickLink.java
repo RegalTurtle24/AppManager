@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class NewQuickLink {
 	
 	// purpose: createNewQuickLink takes in a Name, URL, usernames, and password and
@@ -9,6 +11,10 @@ public class NewQuickLink {
 		if (name.equals("") && url.equals("") && username.equals("") && password.equals("")) {
 			return null; // return null if the nothing was inputted
 		} else { // if any parameter inputted return quicklink
+			//ArrayList parameters = new ArrayList();
+			//parameters.add(name);
+			//.add()
+			//FileManager.writeToFile();
 			return new QuickLinks(username, password, url, name);
 		}
 		
