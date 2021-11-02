@@ -18,7 +18,26 @@ public class FileManager {
 	// Output: ArrayList of the next LINES_PER_SET lines
 	public static ArrayList<String> getNextSet()
 	{
-		return null;
+		try {
+			if(info == null) {
+				info = new File("infoFile.txt");
+				createDefaultFile(info);
+			}
+			if(sc == null) {
+				sc = new Scanner(info);
+			}
+			ArrayList<String> set = new ArrayList<String>();
+			for(int i = 0 ; i < LINES_PER_SET ; i++) {
+				if (sc.hasNext()) {
+					set.add(sc.nextLine());
+				} else {
+					return null;
+				}
+			}
+			return set;
+		} catch (IOException e) {
+			return null;
+		}
 	}
 	
 	// Purpose: Checks if there is a file in the folder already, and if there is not it will create
@@ -73,10 +92,5 @@ public class FileManager {
 	public static boolean writeToFile(ArrayList<String> parameters)
 	{
 		return false;
-	}
-	
-	public static void main(String[] args) {
-		info = new File("infoFile.txt");
-		createDefaultFile(info);
 	}
 }
