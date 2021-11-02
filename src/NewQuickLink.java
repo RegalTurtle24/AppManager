@@ -11,10 +11,12 @@ public class NewQuickLink {
 		if (name.equals("") && url.equals("") && username.equals("") && password.equals("")) {
 			return null; // return null if the nothing was inputted
 		} else { // if any parameter inputted return quicklink
-			//ArrayList parameters = new ArrayList();
-			//parameters.add(name);
-			//.add()
-			//FileManager.writeToFile();
+			ArrayList<String> parameters = new ArrayList<String>();
+			parameters.add(name);
+			parameters.add(url);
+			parameters.add(username);
+			parameters.add(password);
+			//FileManager.writeToFile(parameters);
 			return new QuickLinks(username, password, url, name);
 		}
 		
