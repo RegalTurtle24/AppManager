@@ -25,9 +25,45 @@ public class FileManager {
 	// a file and load it with the default links
 	// Input: None
 	// Output: If there is no file, create file
-	public static boolean createDefaultFile()
+	public static boolean createDefaultFile(File f)
 	{
-		return false;
+		try {
+//			createNewFile tries to create a new file, if it does, returns true, if not, returns
+//			false
+			if(f.createNewFile()) {
+				FileWriter fw = new FileWriter(f, true);
+//				name
+				fw.write("Skyward Grades\n");
+//				URL
+				fw.write("https://www2.saas.wa-k12.net/scripts/cgiip.exe/WService=wlkwashs71/fwemnu01.w\n");
+//				username
+				fw.write("\n");
+//				password
+				fw.write("\n");
+				
+				fw.write("Skyward Attendance\n");
+				fw.write("\n");
+				fw.write("\n");
+				fw.write("\n");
+				
+				fw.write("Frontline Absence Management\n");
+				fw.write("\n");
+				fw.write("\n");
+				fw.write("\n");
+				
+				fw.write("Frontline Evaluations\n");
+				fw.write("\n");
+				fw.write("\n");
+				fw.write("\n");
+				
+				fw.close();
+				return true;
+			} else {
+				return false;
+			}
+		} catch (IOException e) {
+			return false;
+		}
 	}
 	
 	// Purpose: Write a new set of information at the bottom of the file or where 1st parameter
@@ -45,17 +81,5 @@ public class FileManager {
 	public static int getNumSets()
 	{
 		return 0;
-	}
-	
-	public static void main(String[] args) {
-		info = new File("infoFile.txt");
-		try {
-			info.createNewFile();
-			fw = new FileWriter(info, true);
-			fw.write("hello world");
-			fw.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 }
