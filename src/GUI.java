@@ -12,6 +12,9 @@ public class GUI {
 	
 	public static void main(String[] args) {  
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		websites.add("AP Classroom");
+		websites.add("Pearson's Mastering Biology");
+		//stuff here to call sam's class
 		addButton(f, "new link");		
 		visuals(f, websites);
 	}  
@@ -30,7 +33,7 @@ public class GUI {
 		JButton temp = new JButton(name);  
 		temp.addActionListener(new ActionListener(){  
 		    public void actionPerformed(ActionEvent e){  
-		    	//the print statements are temporary; i will call runner here
+		    	//the print statements are temporary; i will call other classes here
 		    	if(name.equals("new link")) {
 		    		System.out.println("creating new link");
 		    		createNewLink();
