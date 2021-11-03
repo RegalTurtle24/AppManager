@@ -20,4 +20,5 @@ public class NewQuickLink {
 			return new QuickLinks(username, password, url, name);
 		}
 	}
+
 }
