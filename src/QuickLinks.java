@@ -1,3 +1,7 @@
+import java.security.KeyPairGenerator;
+
+import javax.crypto.Cipher;
+
 // make and save links
 public class QuickLinks {
 	//i'm not sure if we're doing encryption, 
@@ -17,16 +21,16 @@ public class QuickLinks {
 		this.name = name;
 	}
 	
+	public String getUsername() {
+		return username;
+	}
+	
 	public String getPassword () {
 		return password;
 	}
 	
 	public String getUrl() {
 		return url;
-	}
-	
-	public String getUsername() {
-		return username;
 	}
 	
 	public String getName() {
@@ -47,5 +51,13 @@ public class QuickLinks {
 	
 	public void setName(String newName) {
 		name = newName;
-	}	
+	}
+	
+	public String encrypt(String unsafe) {
+		return null;
+	}
+	
+	public String decrypt(String safe) {
+		return null;
+	}
 }

@@ -12,14 +12,7 @@ public class QuickLinksTest {
 	//for all of the get methods  ((: <3
 	@Test	
 	void testGetUsername() {
-		int length = 16;
-		StringBuilder tester = new StringBuilder(length);
-		
-		for (int i = 0; i < length; i++) {
-			tester.append((char) (Math.random() * 94) + 20);
-		}
-		
-		String username = tester.toString();
+		String username = stringGen(16);		
 		System.out.println(username);
 		
 		QuickLinks test = new QuickLinks(username, "", "", "");
@@ -32,15 +25,8 @@ public class QuickLinksTest {
 	//so i'm just making one test method
 	//for all of the set methods  ((: <3
 	@Test
-	void testSetUsername() {
-		int length = 16;
-		StringBuilder tester = new StringBuilder(length);
-		
-		for (int i = 0; i < length; i++) {
-			tester.append((char) (Math.random() * 94) + 20);
-		}
-		
-		String username = tester.toString();
+	void testSetUsername() {		
+		String username = stringGen(16);
 		System.out.println("\n" + username);
 		
 		QuickLinks test = new QuickLinks("ilovebees", "", "", "");
@@ -50,4 +36,26 @@ public class QuickLinksTest {
 		
 		assertTrue(test.getUsername() == username);
 	}
+	
+	//testing encryption, i guess
+	@Test
+	void testEncrypt() {
+		String secret = stringGen(16);
+		QuickLinks test = new QuickLinks(secret, "", "", "");
+		
+		String encrypted = test.encrypt(test.getUsername());
+		
+		assertTrue(secret == test.decrypt(encrypted) && secret != null);
+	}
+	
+	private static String stringGen(int length) {
+		StringBuilder tester = new StringBuilder(length);
+		
+		for (int i = 0; i < length; i++) {
+			tester.append((char) (Math.random() * 94) + 20);
+		}
+		
+		return tester.toString();
+	}
 }
+
