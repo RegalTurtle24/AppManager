@@ -19,7 +19,5 @@ public class NewQuickLink {
 			//FileManager.writeToFile(parameters);
 			return new QuickLinks(username, password, url, name);
 		}
-		
-		
 	}
 }
