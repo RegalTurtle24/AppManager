@@ -5,23 +5,13 @@ import java.io.FileNotFoundException;
 
 public class NewQuickLinkTest {
 	
-	@Test
-	// purpose: Tests if NewQuickLink returns an object 
-	// input: No parameters, just runs createNewQuickLink
-	// output: null or an object
-	public void doesReturnObject() {
-		QuickLinks link = NewQuickLink.createNewQuickLink("", "", "", "");
-		Assert.assertEquals(link, null);
-	}
-	
-	@Test
-	// purpose: Tests if node input appear in QuickLink 
-	// input: Name = LWSD
-	// output: QuickLink with name Lwsd
-	public void doesMethodInputNameIntoQuickLink() {
-		QuickLinks link = NewQuickLink.createNewQuickLink("", "", "", "LWSD");
-		Assert.assertEquals(link.getName(), "LWSD");
-	}
+	//@Test
+	// purpose: 
+	// input:
+	// output:
+	//public void doesCodeAddQuickLink() {
+		
+	//}
 	
 	@Test
 	// purpose: Tests if write onto file
