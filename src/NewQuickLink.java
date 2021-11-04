@@ -7,18 +7,18 @@ public class NewQuickLink {
 	// the quick link into files. 
 	// input: Name, URL, username, and password
 	// output: returns a QuickLinks with the inputted Name, URL, username, and password
-	public static QuickLinks createNewQuickLink(String username, String password, String url, String name) {
-		if (name.equals("") && url.equals("") && username.equals("") && password.equals("")) {
-			return null; // return null if the nothing was inputted
-		} else { // if any parameter inputted return quicklink
-			ArrayList<String> parameters = new ArrayList<String>();
-			parameters.add(name);
-			parameters.add(url);
-			parameters.add(username);
-			parameters.add(password);
-			//FileManager.writeToFile(parameters);
-			return new QuickLinks(username, password, url, name);
-		}
+	public static void createNewQuickLink(String username, String password, String url, String name, LinkManager linkmanager) {
+		// create array with parameters 
+		ArrayList<String> parameters = new ArrayList<String>();
+		parameters.add(name);
+		parameters.add(url);
+		parameters.add(username);
+		parameters.add(password);
+		// input into manager
+		FileManager.writeToFile(parameters);
+		// put QuickLink into LinkManager quick links hashMap
+		QuickLinks link = new QuickLinks(username, password, url, name);
+		linkmanager.addLink(link);	
 	}
 
 }

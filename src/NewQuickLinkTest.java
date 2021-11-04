@@ -13,9 +13,10 @@ public class NewQuickLinkTest {
 	// input: username = gaming, password = gaming, url = gaming, name = gaming
 	// output: There is a quickLink stored in the HashMap.
 	public void doesCodeAddQuickLink() {
-		// run method
-		NewQuickLink.createNewQuickLink("gaming", "gaming", "gaming", "gaming");
-		QuickLinks link = null; //LinkManager.getLink("gaming");
+		// create quickLink
+		LinkManager manager = new LinkManager();
+		NewQuickLink.createNewQuickLink("gaming", "gaming", "gaming", "gaming", manager);
+		QuickLinks link = manager.getLink("gaming");
 		//retrieve
 		if (link == null) {
 			Assert.fail("QuickLink wasn't even in linkManager Hashmap");
@@ -37,7 +38,9 @@ public class NewQuickLinkTest {
 	// output: gaming, gaming, gaming.com, and gaming is written onto file
 	public void doesCodeWriteOntoFile() {
 		try {
-			NewQuickLink.createNewQuickLink("gaming", "gaming", "gaming", "gaming");
+			// createNewLink
+			LinkManager manager = new LinkManager();
+			NewQuickLink.createNewQuickLink("gaming", "gaming", "gaming", "gaming", manager);
 			// create File and file Reader
 			File file = new File("infoFile.txt"); // <-- Thys supplies this 
 			Scanner scanner = new Scanner(file);
