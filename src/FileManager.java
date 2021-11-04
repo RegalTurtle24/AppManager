@@ -29,7 +29,6 @@ public class FileManager {
 				if (sc.hasNext()) {
 					set.add(sc.nextLine());
 				} else {
-					System.out.print("hello world\n");
 					return null;
 				}
 			}
