@@ -1,21 +1,39 @@
 import org.junit.*;
 import java.util.Scanner;
+
+import static org.junit.Assert.fail;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 
 public class NewQuickLinkTest {
 	
-	//@Test
-	// purpose: 
-	// input:
-	// output:
-	//public void doesCodeAddQuickLink() {
-		
-	//}
+	@Test
+	// purpose: Check if the code adds a particular quickLink to the QuickLink HashMap
+	// input: username = gaming, password = gaming, url = gaming, name = gaming
+	// output: There is a quickLink stored in the HashMap.
+	public void doesCodeAddQuickLink() {
+		// run method
+		NewQuickLink.createNewQuickLink("gaming", "gaming", "gaming", "gaming");
+		QuickLinks link = null; //LinkManager.getLink("gaming");
+		//retrieve
+		if (link == null) {
+			Assert.fail("QuickLink wasn't even in linkManager Hashmap");
+		} else {
+			String[] expected = {"gaming", "gaming", "gaming", "gaming"};
+			String[] results = new String[4];
+			results[0] = link.getUsername();
+			results[1] = link.getPassword();
+			results[2] = link.getUrl();
+			results[3] = link.getName();
+			Assert.assertEquals(expected, results);
+		}
+
+	}
 	
 	@Test
 	// purpose: Tests if write onto file
-	// input: username = gaming, password = gaming, url = gaming.com, name = gaming
+	// input: username = gaming, password = gaming, url = gaming, name = gaming
 	// output: gaming, gaming, gaming.com, and gaming is written onto file
 	public void doesCodeWriteOntoFile() {
 		try {
