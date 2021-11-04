@@ -12,6 +12,7 @@ public class GUI {
 	
 	public static void main(String[] args) {  
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//presets
 		websites.add("AP Classroom");
 		websites.add("Pearson's Mastering Biology");
 		//stuff here to call sam's class
