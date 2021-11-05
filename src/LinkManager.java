@@ -36,8 +36,7 @@ public class LinkManager {
 	// Input: Name of website, username for site, and password for site
 	// Output: Returns true if the username and password were input, and false if the name
 	// submitted does not appear in the text file
-	public boolean addCredentials(String name, String user, String pass)
-	{
+	public boolean addCredentials(String name, String user, String pass) {
 		return false;
 	}
 	
