@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 public class LinkManager {
-	private static HashMap<String, QuickLinks> links;
+	private HashMap<String, QuickLinks> links;
 	
 	public LinkManager()
 	{
@@ -37,7 +37,13 @@ public class LinkManager {
 	// Output: Returns true if the username and password were input, and false if the name
 	// submitted does not appear in the text file
 	public boolean addCredentials(String name, String user, String pass) {
-		return false;
+		QuickLinks link = new QuickLinks(user, pass, name, name);
+		if (links.containsKey(name)) {
+			links.put(name, link);
+			return true ;
+		} else {
+			return false;
+		}
 	}
 	
 	// Purpose: Returns the HashMap of QuickLinks

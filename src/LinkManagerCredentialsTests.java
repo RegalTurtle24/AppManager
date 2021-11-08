@@ -21,5 +21,34 @@ public class LinkManagerCredentialsTests {
 		Assert.assertEquals(output, expected);
 	}
 	
+	@Test
+	// purpose: checks if the method returns true if the username and password were input
+	// input: run addlink with QuickLink containing name = gaming, useranme = gaming, 
+	// password = gaming, and url gaming. THen run addCredentials with name = gaming, user = bruh,
+	// password = bruh.
+	// output: returns true the changes
+	public void doesAddCedentialsReturnTrueIfUserPassInputted() {
+		// set up link
+		LinkManager manager = new LinkManager();
+		QuickLinks link = new QuickLinks("gaming", "gaming", "gaming", "gaming");
+		manager.addLink(link);
+		// test
+		Assert.assertTrue(manager.addCredentials("gaming", "bruh", "bruh"));
+	}
+	
+	/*
+	@Test
+	// purpose: check if URL is not changed when QuickLink is changed
+	// input: run addlink with QuickLink containing name = gaming, username = gaming, 
+	// password = gaming, and url gaming. THen run addCredentials with name = gaming, user = go,
+	// password = go.
+	// output: the URL is still "gaming"
+	public void doesAddCedentialsKeepTheUrl() {
+		// set up link
+		LinkManager manager = new LinkManager();
+		QuickLinks link = new QuickLinks("gaming", "gaming", "gaming", "gaming");
+	}
+	*/
+	
 	
 }
