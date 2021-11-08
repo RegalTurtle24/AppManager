@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LinkManager {
@@ -6,6 +7,16 @@ public class LinkManager {
 	public LinkManager()
 	{
 		links = new HashMap<String, QuickLinks>();
+		ArrayList<String> nextSet = FileManager.getNextSet();
+		while(nextSet != null) {
+			QuickLinks newQL = new QuickLinks(
+						nextSet.get(0),
+						nextSet.get(1),
+						nextSet.get(2),
+						nextSet.get(3));
+			links.put(nextSet.get(0), newQL);
+			nextSet = FileManager.getNextSet();
+		}
 	}
 	
 	// Purpose: Adds a link with the characteristics Name, Link, Username, and Password as
