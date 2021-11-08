@@ -11,6 +11,7 @@ public class GUI {
 	private static int count = 0;
 	
 	public static void main(String[] args) {  
+		
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//presets
 		websites.add("AP Classroom");
@@ -56,7 +57,7 @@ public class GUI {
 	    myPanel.add(new JLabel("name: "));
 	    myPanel.add(name);
 	    myPanel.add(Box.createVerticalStrut(15)); 
-	    myPanel.add(new JLabel("website link:"));
+	    myPanel.add(new JLabel("website link (to login page):"));
 	    myPanel.add(websiteLink);
 	    myPanel.add(Box.createVerticalStrut(15)); 
 	    myPanel.add(new JLabel("username: "));
