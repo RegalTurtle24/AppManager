@@ -14,8 +14,7 @@ public class FileManager {
 	// LinkManager
 	// Input: None
 	// Output: ArrayList of the next LINES_PER_SET lines
-	public static ArrayList<String> getNextSet()
-	{
+	public static ArrayList<String> getNextSet() {
 		try {
 			if(info == null) {
 				info = new File("infoFile.txt");
@@ -26,7 +25,7 @@ public class FileManager {
 			}
 			ArrayList<String> set = new ArrayList<String>();
 			for(int i = 0 ; i < LINES_PER_SET ; i++) {
-				if (sc.hasNext()) {
+				if (sc.hasNextLine()) {
 					set.add(sc.nextLine());
 				} else {
 					return null;
