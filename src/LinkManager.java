@@ -37,10 +37,13 @@ public class LinkManager {
 	// Output: Returns true if the username and password were input, and false if the name
 	// submitted does not appear in the text file
 	public boolean addCredentials(String name, String user, String pass) {
-		QuickLinks link = new QuickLinks(user, pass, name, name);
+		// set up links
 		if (links.containsKey(name)) {
-			links.put(name, link);
+			QuickLinks link = links.get(name);
+			link.setUsername(user);
+			link.setPassword(pass);
 			return true ;
+		// or else return false if not in HashMap
 		} else {
 			return false;
 		}
