@@ -10,10 +10,10 @@ public class LinkManager {
 		ArrayList<String> nextSet = FileManager.getNextSet();
 		while(nextSet != null) {
 			QuickLinks newQL = new QuickLinks(
-						nextSet.get(0),
-						nextSet.get(1),
 						nextSet.get(2),
-						nextSet.get(3));
+						nextSet.get(3),
+						nextSet.get(1),
+						nextSet.get(0));
 			links.put(nextSet.get(0), newQL);
 			nextSet = FileManager.getNextSet();
 		}
