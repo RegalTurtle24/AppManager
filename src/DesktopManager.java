@@ -1,12 +1,13 @@
-import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class DesktopManager {
 	
 	public static void openLink(QuickLinks customLink) {
-		
+		System.setProperty("webdriver.chrome.driver", "C:\\WebDriver\\bin\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://www.lwsd.org/");
+		driver.quit();
 	}
 	
 	public static void loginSkyward(QuickLinks skyward) {
