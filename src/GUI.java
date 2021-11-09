@@ -7,8 +7,13 @@ import javax.swing.*;
 public class GUI {
 	
 	private static ArrayList<String> websites = new ArrayList<String>();
-	static JFrame f = new JFrame(); 
-	private static int count = 0;
+	static JFrame f;
+	private static int count;
+	
+	public GUI() {
+		f = new JFrame();
+		count = 0;
+	}
 	
 	public static void main(String[] args) {  
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -83,12 +88,13 @@ public class GUI {
 	    	usernameString = username.getText();
 	    	passwordString = password.getText();
 	    	
+	    	//temporary
 	    	System.out.println("name: " + nameString);
 	    	System.out.println("website link: " + websiteLinkString);
 	    	System.out.println("username: " + usernameString);
 	    	System.out.println("password: " + passwordString);
 	    	
-	    	websites.add(websiteLinkString);
+	    	websites.add(nameString);
 	    	
 	    	visuals(f, websites);
 	    }
