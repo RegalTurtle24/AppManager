@@ -6,7 +6,7 @@ public class DesktopManager {
 	public static void openLink(QuickLinks customLink) {
 		System.setProperty("webdriver.chrome.driver", "C:\\WebDriver\\bin\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
-		driver.get("https://www.lwsd.org/"); 
+		driver.get("https://www.lwsd.org/");
 		driver.quit();
 	}
 	
