@@ -15,7 +15,7 @@ public class GUI {
 		count = 0;
 	}
 	
-	public static void main(String[] args) {  
+	public void run() {  
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//presets
 		websites.add("AP Classroom");
@@ -26,7 +26,7 @@ public class GUI {
 	}  
 	
 	//creating the buttons
-	public static void visuals(JFrame f, ArrayList<String> websites) {
+	public void visuals(JFrame f, ArrayList<String> websites) {
 		for(int i = count; i < websites.size(); i++) {
 			addButton(f, websites.get(i));
 			count++;
@@ -37,7 +37,7 @@ public class GUI {
 	}
 	
 	//adding a button
-	public static void addButton(JFrame f, String name) {
+	public void addButton(JFrame f, String name) {
 		JButton temp = new JButton(name);  
 		temp.addActionListener(new ActionListener(){  
 		    public void actionPerformed(ActionEvent e){  
@@ -54,7 +54,7 @@ public class GUI {
 	}
 	
 	//creating a new link
-	public static void createNewLink() {
+	public void createNewLink() {
 	    JTextField name = new JTextField(10);
 	    JTextField websiteLink = new JTextField(10);
 	    JTextField username = new JTextField(10);
