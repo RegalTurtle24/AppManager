@@ -7,7 +7,7 @@ public class DesktopManager {
 		System.setProperty("webdriver.chrome.driver", "C:\\WebDriver\\bin\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://www.lwsd.org/");
-		driver.quit();
+		//driver.quit();
 	}
 	
 	public static void loginSkyward(QuickLinks skyward) {
