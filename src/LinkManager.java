@@ -9,9 +9,9 @@ public class LinkManager {
 	}
 	
 	//this method is just for testing
-	/* public LinkManager(HashMap<String, QuickLinks> links) {
+	public LinkManager(HashMap<String, QuickLinks> links) {
 		this.links = links;
-	}*/
+	}
 	
 	// Purpose: Adds a link with the characteristics Name, Link, Username, and Password as
 	// given by the parameters 
