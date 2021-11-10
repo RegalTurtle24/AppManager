@@ -5,7 +5,7 @@ public class DesktopManager {
 	private WebDriver driver;
 	public DesktopManager() {
 		System.setProperty("webdriver.chrome.driver", ".\\libs\\chromedriver.exe");
-		driver = new ChromeDriver();
+		driver = new ChromeDriver(); 
 	}
 	public void openLink(QuickLinks customLink) {
 		driver.get(customLink.getUrl());
