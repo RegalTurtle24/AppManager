@@ -4,11 +4,11 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class DesktopManagerTests {
-	
+	DesktopManager runner = new DesktopManager();
 	@Test
 	public void openBrowser() {
 		QuickLinks test = new QuickLinks("yes", "yes", "https://lwsd.org", "lwsd website");
-		DesktopManager.openLink(test);
+		runner.openLink(test);
 		assertTrue("this did not open lwsd.org", true);
 	}
 //	public static void loginSkyward() {
