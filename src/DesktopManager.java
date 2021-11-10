@@ -2,29 +2,31 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class DesktopManager {
-	
-	public static void openLink(QuickLinks customLink) {
+	private WebDriver driver;
+	public DesktopManager() {
 		System.setProperty("webdriver.chrome.driver", ".\\libs\\chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
+		driver = new ChromeDriver();
+	}
+	public void openLink(QuickLinks customLink) {
 		driver.get(customLink.getUrl());
 	}
 	
-	public static void loginSkyward(QuickLinks skyward) {
+	public void loginSkyward(QuickLinks skyward) {
 		
 	}
 	
-	public static void openSkywardGrading(QuickLinks skywardLink) {
+	public void openSkywardGrading(QuickLinks skywardLink) {
 		openLink(skywardLink);
 	}
 	
 	
-	public static void openSkywardAttendance(QuickLinks skywardLink) {
+	public void openSkywardAttendance(QuickLinks skywardLink) {
 		openLink(skywardLink);
 
 	}
 	
 		
-	public static void loginCustomQuicklink(QuickLinks customLink) {
+	public void loginCustomQuicklink(QuickLinks customLink) {
 		openLink(customLink);
 
 	}
