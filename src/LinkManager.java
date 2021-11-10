@@ -19,6 +19,11 @@ public class LinkManager {
 		}
 	}
 	
+	//this method is just for testing
+	public LinkManager(HashMap<String, QuickLinks> links) {
+		this.links = links;
+	}
+	
 	// Purpose: Adds a link with the characteristics Name, Link, Username, and Password as
 	// given by the parameters 
 	// Input: QuickLinks
@@ -26,6 +31,15 @@ public class LinkManager {
 	// name
 	public boolean addLink(QuickLinks link)
 	{
+		//if there's already an entry in the map with the same name as the link to be added
+		//return true
+		if (links.containsKey(link.getName())) {
+			return true;
+		}
+		
+		//otherwise put the link into the map
+		//return false
+		links.put(link.getName(), link);
 		return false;
 	}
 	
@@ -51,6 +65,6 @@ public class LinkManager {
 	// Output: QuickLinks if it was found, null if not
 	public QuickLinks getLink(String name)
 	{
-		return null;
+		return links.get(name);
 	}
 }
