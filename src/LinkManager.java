@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LinkManager {
@@ -39,9 +40,17 @@ public class LinkManager {
 	public boolean addCredentials(String name, String user, String pass) {
 		// set up links
 		if (links.containsKey(name)) {
+			// change QuickLink in HashMap
 			QuickLinks link = links.get(name);
 			link.setUsername(user);
 			link.setPassword(pass);
+			// change QuickLink in file
+			ArrayList<String> parameters = new ArrayList<String>(); 
+			parameters.add(name);
+			parameters.add(link.getUrl());
+			parameters.add(user);
+			parameters.add(pass);
+			FileManager.writeToFile(parameters);
 			return true ;
 		// or else return false if not in HashMap
 		} else {

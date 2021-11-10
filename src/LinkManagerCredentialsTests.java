@@ -58,36 +58,31 @@ public class LinkManagerCredentialsTests {
 		Assert.assertEquals("gaming.com", changedLink.getUrl());
 	}
 	
-	/*
 	@Test 
 	// purpose: check if the username and file is written onto file 
 	// input: addlink with name = "jargon", username = "gaming", password = "gaming", url = "gaming.com"
 	// Runs addCredentials with name = "gaming", user = "go", pass = "go"
 	// output: in file "jargon"'s  username and password are both changed to go, go
 	public void doesAddCedentialsChangeFile() {
-		try {
-			// set up QuickLink
-			LinkManager manager = new LinkManager();
-			QuickLinks link = new QuickLinks("gaming", "gaming", "gaming", "jargon");
-			manager.addLink(link);
-			// look though file to setup QuickLink
-			File file = new File("infoFile.txt"); // <- Thys supplies this
-			Scanner scanner = new Scanner(file);
-			// look though file
-			boolean isInformationCorrect = true;
-			ArrayList<String> linkInFile = scanner.next;
-			while (fileManager.getNextSet()) {
-				linkInFile 
-			}
-			
-		} catch (FileNotFoundException E) {
-			Assert.fail("The file doesn't exist");
+		// set up QuickLink
+		LinkManager manager = new LinkManager();
+		QuickLinks link = new QuickLinks("gaming", "gaming", "gaming", "jargon");
+		manager.addLink(link);
+		manager.addCredentials("Jargon", "go", "go");
+		// look though file to see find the QuickLink
+		ArrayList<String> set = FileManager.getNextSet();
+		while (set != null && !set.get(0).equals("jargon")) {  // <-- need something to handle if Jargon doesn't exist
+			set = FileManager.getNextSet();
 		}
-		
-		
-		
+		// check if on file and if addCredentials actually change password and username
+		if (set == null) {
+			Assert.fail("QuickLink wasn't in file in the first place");
+		}
+		// if in file did it change
+		String[] expected = {"go", "go"};
+		String[] actual = {set.get(2), set.get(3)};
+		String displayString = "expected user: go and pass: go but got, pass:" + actual[0] + "user: " + actual[1];
+		Assert.assertArrayEquals(displayString, expected, actual);	
 	}
-	*/
-	
 	
 }
