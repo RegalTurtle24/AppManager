@@ -7,7 +7,7 @@ public class DesktopManagerTests {
 	
 	@Test
 	public void openBrowser() {
-		QuickLinks test = new QuickLinks("yes", "yes", "lwsd.org", "lwsd website");
+		QuickLinks test = new QuickLinks("yes", "yes", "https://lwsd.org", "lwsd website");
 		DesktopManager.openLink(test);
 		assertTrue("this did not open lwsd.org", true);
 	}
