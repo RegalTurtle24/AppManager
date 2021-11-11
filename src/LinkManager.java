@@ -7,12 +7,22 @@ public class LinkManager {
 	public LinkManager()
 	{
 		links = new HashMap<String, QuickLinks>();
+		ArrayList<String> nextSet = FileManager.getNextSet();
+		while(nextSet != null) {
+			QuickLinks newQL = new QuickLinks(
+						nextSet.get(2),
+						nextSet.get(3),
+						nextSet.get(1),
+						nextSet.get(0));
+			links.put(nextSet.get(0), newQL);
+			nextSet = FileManager.getNextSet();
+		}
 	}
 	
 	//this method is just for testing
-	/* public LinkManager(HashMap<String, QuickLinks> links) {
+	public LinkManager(HashMap<String, QuickLinks> links) {
 		this.links = links;
-	}*/
+	}
 	
 	// Purpose: Adds a link with the characteristics Name, Link, Username, and Password as
 	// given by the parameters 
