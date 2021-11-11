@@ -3,8 +3,7 @@ import java.util.Scanner;
 
 import static org.junit.Assert.fail;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 public class NewQuickLinkTest {
 	
@@ -37,25 +36,22 @@ public class NewQuickLinkTest {
 	// input: username = gaming, password = gaming, url = gaming, name = gaming
 	// output: gaming, gaming, gaming.com, and gaming is written onto file
 	public void doesCodeWriteOntoFile() {
-		try {
-			// createNewLink
-			LinkManager manager = new LinkManager();
-			NewQuickLink.createNewQuickLink("gaming", "gaming", "gaming", "gaming", manager);
-			// create File and file Reader
-			File file = new File("infoFile.txt"); // <-- Thys supplies this 
-			Scanner scanner = new Scanner(file);
-			// goes though file to see if information was written
-			boolean isInformationCorrect = true;
-			for (int x = 0; x < 4; x++) {
-				if (!scanner.hasNextLine() || !scanner.nextLine().equals("gaming")) {
-					isInformationCorrect = false;
-				} 
-			}
-			Assert.assertTrue("successfully wrote on file", isInformationCorrect);
-			scanner.close();
-			
-		} catch (FileNotFoundException E) {
-			Assert.fail("The File didn't exist");
+		// createNewLink
+		LinkManager manager = new LinkManager();
+		NewQuickLink.createNewQuickLink("gaming", "gaming", "gaming", "gaming", manager);
+		// go though each set on the file and find one with name gaming
+		ArrayList<String> set = FileManager.getNextSet();
+		while (set != null && !set.get(0).contentEquals("gaming")) {
+			set = FileManager.getNextSet();
 		}
+		// check if the set is in there, if not wasn't written to file
+		if (set == null) {
+			Assert.fail("The QuickLink wasn't in the file in the first place");
+		}
+		
+		// If it's in file return true
+		String[] expected = {"gaming", "gaming", "gaming", "gaming"};
+		String[] actual = {set.get(0), set.get(1), set.get(2), set.get(3)};
+		Assert.assertArrayEquals("wrong values inputted", expected, actual);
 	}
 }
