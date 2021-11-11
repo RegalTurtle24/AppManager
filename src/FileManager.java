@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,21 +9,38 @@ public class FileManager {
 	private static final int LINES_PER_SET = 4;
 	private static Scanner sc;
 	private static File info;
-	private static FileWriter fw;
 	
 	// Purpose: Gets the next set of LINES_PER_SET lines and returns them in an ArrayList to
 	// LinkManager
 	// Input: None
 	// Output: ArrayList of the next LINES_PER_SET lines
-	public static ArrayList<String> getNextSet()
-	{
-		return null;
+	public static ArrayList<String> getNextSet() {
+		try {
+			if(info == null) {
+				info = new File("infoFile.txt");
+				createDefaultFile(info);
+			}
+			if(sc == null) {
+				sc = new Scanner(info);
+			}
+			ArrayList<String> set = new ArrayList<String>();
+			for(int i = 0 ; i < LINES_PER_SET ; i++) {
+				if (sc.hasNextLine()) {
+					set.add(sc.nextLine());
+				} else {
+					return null;
+				}
+			}
+			return set;
+		} catch (IOException e) {
+			return null;
+		}
 	}
 	
 	// Purpose: Checks if there is a file in the folder already, and if there is not it will create
 	// a file and load it with the default links
 	// Input: None
-	// Output: If there is no file, create file
+	// Output: If there is no file, create file, returns true if a new file was created
 	public static boolean createDefaultFile(File f)
 	{
 		try {
@@ -56,6 +72,16 @@ public class FileManager {
 				fw.write("\n");
 				fw.write("\n");
 				
+				fw.write("AP Classroom\n");
+				fw.write("\n");
+				fw.write("\n");
+				fw.write("\n");
+				
+				fw.write("\n");
+				fw.write("\n");
+				fw.write("\n");
+				fw.write("Pearson's Mastering Biology\n");
+				
 				fw.close();
 				return true;
 			} else {
@@ -69,17 +95,82 @@ public class FileManager {
 	// Purpose: Write a new set of information at the bottom of the file or where 1st parameter
 	// (name) is found
 	// Input: ArrayList of parameters to be added
-	// Output: Returns false if no data was overridden, true if any data was changed
+	// Output: Returns false if no data was overridden, true if any data was overridden
 	public static boolean writeToFile(ArrayList<String> parameters)
 	{
-		return false;
-	}
-	
-	// Purpose: Get the number of different sets, stored at the top of the file
-	// Input: None
-	// Output: Number of sets
-	public static int getNumSets()
-	{
-		return 0;
+		// create scanner and writer vars
+		Scanner editingScanner;
+		FileWriter fw;
+		String name = parameters.get(0);
+		
+		try {
+			// if no file already, make it
+			if(info == null) {
+				info = new File("infoFile.txt");
+				createDefaultFile(info);
+			}
+			
+			// create a temp file
+			File temp = new File("tempFile.txt");
+			
+			// instantiate the scanner and writer
+			editingScanner = new Scanner(info);
+			fw = new FileWriter(temp);
+			
+			// create vars for upcoming loop
+			int i = 0;
+			boolean edited = false;
+			
+			while(editingScanner.hasNextLine()) {
+				String nextLine = editingScanner.nextLine();
+				
+				if(i % LINES_PER_SET == 0 && nextLine.equals(name)) {
+					
+					edited = true;
+					
+					fw.write(nextLine + "\n");
+					
+					for(int j = 1 ; j < LINES_PER_SET ; j++) {
+						if(editingScanner.hasNextLine()) {
+							nextLine = editingScanner.nextLine();
+							
+							if(parameters.get(j).equals("")) {
+								fw.write(nextLine + "\n");
+							} else {
+								fw.write(parameters.get(j) + "\n");
+							}
+							
+							i++;
+						} else {
+							break;
+						}
+					}
+				} else {
+					fw.write(nextLine + "\n");
+				}
+			}
+			
+			if(!edited) {
+				for(int j = 0 ; j < LINES_PER_SET ; j++) {
+					fw.write(parameters.get(j) + "\n");
+				}
+			}
+			
+			editingScanner.close();
+			fw.close();
+			sc.close();
+			
+			info.delete();
+			temp.renameTo(info);
+			
+			sc = new Scanner(info);
+			
+			return edited;
+			
+		} catch (FileNotFoundException e) {
+			return false;
+		} catch (IOException e) {
+			return false;
+		}
 	}
 }
