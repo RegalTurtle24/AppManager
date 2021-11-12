@@ -77,7 +77,7 @@ public class LinkManagerCredentialsTests {
 		}
 		FileManager.writeToFile(parameters);
 		// run addCredentials
-		manager.addCredentials("Jargon", "go", "go");
+		manager.addCredentials("jargon", "go", "go");
 		// look though file to see find the QuickLink
 		ArrayList<String> set = FileManager.getNextSet();
 		while (set != null && !set.get(0).equals("jargon")) {  // <-- need something to handle if Jargon doesn't exist
