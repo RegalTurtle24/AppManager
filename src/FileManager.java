@@ -174,6 +174,10 @@ public class FileManager {
 		}
 	}
 	
+	// Mostly copied from last method, does the same thing, except skips over lines after the
+	// matching name
+	// Input: Name
+	// Output: Edited file
 	public static boolean deleteSet(String name) {
 		// create scanner and writer vars
 		Scanner editingScanner;
@@ -203,8 +207,8 @@ public class FileManager {
 				if(i % LINES_PER_SET == 0 && nextLine.equals(name)) {
 					
 					edited = true;
-					i += 4;
-					for(int j = 0 ; j < 3 ; j++) {
+					i += LINES_PER_SET; // because we skip over several lines here
+					for(int j = 0 ; j < LINES_PER_SET - 1 ; j++) { // advances the scanner to the next set
 						nextLine = editingScanner.nextLine();
 					}
 					
