@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LinkManager {
-	private static HashMap<String, QuickLinks> links;
+	private HashMap<String, QuickLinks> links;
 	
 	public LinkManager()
 	{
@@ -47,9 +47,25 @@ public class LinkManager {
 	// Input: Name of website, username for site, and password for site
 	// Output: Returns true if the username and password were input, and false if the name
 	// submitted does not appear in the text file
-	public boolean addCredentials(String name, String user, String pass)
-	{
-		return false;
+	public boolean addCredentials(String name, String user, String pass) {
+		// set up links
+		if (links.containsKey(name)) {
+			// change QuickLink in HashMap
+			QuickLinks link = links.get(name);
+			link.setUsername(user);
+			link.setPassword(pass);
+			// change QuickLink in file
+			ArrayList<String> parameters = new ArrayList<String>(); 
+			parameters.add(name);
+			parameters.add(link.getUrl());
+			parameters.add(user);
+			parameters.add(pass);
+			FileManager.writeToFile(parameters);
+			return true ;
+		// or else return false if not in HashMap
+		} else {
+			return false;
+		}
 	}
 	
 	// Purpose: Returns the HashMap of QuickLinks
