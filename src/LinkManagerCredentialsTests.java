@@ -22,8 +22,9 @@ public class LinkManagerCredentialsTests {
 		QuickLinks outputLink = manager.getLink("gaming");
 		String[] output = {outputLink.getUsername(), outputLink.getPassword()};
 		String[] expected = {"array", "array"};
-		Assert.assertEquals(output, expected);
+		Assert.assertArrayEquals(output, expected);
 	}
+	
 	
 	@Test
 	// purpose: checks if the method returns true if the username and password were input
@@ -40,7 +41,7 @@ public class LinkManagerCredentialsTests {
 		Assert.assertTrue(manager.addCredentials("gaming", "bruh", "bruh"));
 	}
 	
-	
+
 	@Test
 	// purpose: check if URL is not changed when QuickLink is changed
 	// input: run addlink with QuickLink containing name = gaming, username = gaming, 
@@ -50,11 +51,11 @@ public class LinkManagerCredentialsTests {
 	public void doesAddCedentialsKeepTheUrl() {
 		// set up link
 		LinkManager manager = new LinkManager();
-		QuickLinks link = new QuickLinks("gaming", "gaming", "gaming.com", "gaming");
+		QuickLinks link = new QuickLinks("gaming", "gaming", "gaming.com", "games");
 		manager.addLink(link);
 		// test
-		manager.addCredentials("gaming", "go", "go");
-		QuickLinks changedLink = manager.getLink("gaming");
+		manager.addCredentials("games", "go", "go");
+		QuickLinks changedLink = manager.getLink("games");
 		Assert.assertEquals("gaming.com", changedLink.getUrl());
 	}
 	
@@ -64,10 +65,18 @@ public class LinkManagerCredentialsTests {
 	// Runs addCredentials with name = "gaming", user = "go", pass = "go"
 	// output: in file "jargon"'s  username and password are both changed to go, go
 	public void doesAddCedentialsChangeFile() {
-		// set up QuickLink
+		// set up QuickLink, LinkManager, and File
+		FileManager.createDefaultFile(new File("infoFile"));
 		LinkManager manager = new LinkManager();
 		QuickLinks link = new QuickLinks("gaming", "gaming", "gaming", "jargon");
 		manager.addLink(link);
+		ArrayList<String> parameters = new ArrayList<String>();
+		parameters.add("jargon");
+		for (int x = 0; x < 3; x++) {
+			parameters.add("gaming");
+		}
+		FileManager.writeToFile(parameters);
+		// run addCredentials
 		manager.addCredentials("Jargon", "go", "go");
 		// look though file to see find the QuickLink
 		ArrayList<String> set = FileManager.getNextSet();
