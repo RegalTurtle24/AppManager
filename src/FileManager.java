@@ -77,10 +77,10 @@ public class FileManager {
 				fw.write("\n");
 				fw.write("\n");
 				
-				fw.write("\n");
-				fw.write("\n");
-				fw.write("\n");
 				fw.write("Pearson's Mastering Biology\n");
+				fw.write("\n");
+				fw.write("\n");
+				fw.write("\n");
 				
 				fw.close();
 				return true;
