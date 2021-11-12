@@ -208,7 +208,7 @@ public class FileManager {
 					
 					edited = true;
 					i += LINES_PER_SET; // because we skip over several lines here
-					for(int j = 0 ; j < LINES_PER_SET ; j++) { // advances the scanner to the next set
+					for(int j = 0 ; j < LINES_PER_SET - 1 ; j++) { // advances the scanner to the next set
 						nextLine = editingScanner.nextLine();
 					}
 					
