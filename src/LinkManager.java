@@ -83,4 +83,15 @@ public class LinkManager {
 	{
 		return links.get(name);
 	}
+	
+	// Purpose: Deletes a link from the HashMap and then calls from FileManager to delete it from
+	// the file
+	// Input: Name of file
+	// Output: Changed HashMap and file through FileManager
+	public void deleteLink(String name) {
+		if(links.containsKey(name)) {
+			links.remove(name);
+			FileManager.deleteSet(name);
+		}
+	}
 }
