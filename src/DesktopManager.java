@@ -24,12 +24,14 @@ public class DesktopManager {
 	}
 	
 	public void openSkywardGrading(QuickLinks skywardLink) {
-		openLink(skywardLink);
+		loginSkyward(skywardLink);
+		WebElement home = driver.findElement(By.className("first selected"));
+		WebElement gradebook = driver.findElement(with(By.className("sf_navMenuItem").below(home));
 	}
 	
 	
 	public void openSkywardAttendance(QuickLinks skywardLink) {
-		openLink(skywardLink);
+		loginSkyward(skywardLink);
 
 	}
 	
@@ -37,5 +39,12 @@ public class DesktopManager {
 	public void loginCustomQuicklink(QuickLinks customLink) {
 		openLink(customLink);
 
+	}
+	
+	public void loginPearson(QuickLinks pearsonLink) {
+		WebElement username = driver.findElement(By.id("username"));
+		WebElement password = driver.findElement(By.id("password"));
+		username.sendKeys(pearsonLink.getUsername());
+		password.sendKeys(pearsonLink.getPassword() + Keys.ENTER);
 	}
 }
