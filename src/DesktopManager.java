@@ -3,6 +3,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import static org.openqa.selenium.support.locators.RelativeLocator.with;
 
 public class DesktopManager {
 
@@ -26,7 +27,8 @@ public class DesktopManager {
 	public void openSkywardGrading(QuickLinks skywardLink) {
 		loginSkyward(skywardLink);
 		WebElement home = driver.findElement(By.className("first selected"));
-		WebElement gradebook = driver.findElement(with(By.className("sf_navMenuItem").below(home));
+		WebElement gradebook = driver.findElement(with(By.className("sf_navMenuItem")).below(home));
+		gradebook.click();
 	}
 	
 	
@@ -38,13 +40,20 @@ public class DesktopManager {
 		
 	public void loginCustomQuicklink(QuickLinks customLink) {
 		openLink(customLink);
+		WebElement username = driver.findElement(By.id("username"));
+		WebElement password = driver.findElement(By.id("password"));
+		username.sendKeys(customLink.getUsername());
+		password.sendKeys(customLink.getPassword() + Keys.ENTER);
 
 	}
 	
+	
 	public void loginPearson(QuickLinks pearsonLink) {
-		WebElement username = driver.findElement(By.id("username"));
-		WebElement password = driver.findElement(By.id("password"));
-		username.sendKeys(pearsonLink.getUsername());
-		password.sendKeys(pearsonLink.getPassword() + Keys.ENTER);
+		loginCustomQuicklink(pearsonLink);
+	}
+	
+	
+	public void loginAPClassroom(QuickLinks APLink) {
+		loginCustomQuicklink(APLink);
 	}
 }
