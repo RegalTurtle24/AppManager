@@ -1,4 +1,7 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class DesktopManager {
@@ -13,7 +16,11 @@ public class DesktopManager {
 	}
 	
 	public void loginSkyward(QuickLinks skyward) {
-		
+		driver.get(skyward.getUrl());
+		WebElement loginUser = driver.findElement(By.id("login"));
+		loginUser.sendKeys(skyward.getUsername());
+		WebElement loginPass = driver.findElement(By.id("password"));
+		loginPass.sendKeys(skyward.getPassword()+ Keys.ENTER);
 	}
 	
 	public void openSkywardGrading(QuickLinks skywardLink) {
