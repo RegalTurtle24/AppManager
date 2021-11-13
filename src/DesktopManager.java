@@ -67,7 +67,10 @@ public class DesktopManager {
 		}
 		List<WebElement> menuList = menu.findElements(By.tagName("li"));;
 		WebElement gradebook =  menuList.get(1);
-		gradebook.click();
+		while(!gradebook.isSelected()) {
+			gradebook.click();
+			Thread.sleep(50);
+		}
 		System.out.println(gradebook.isEnabled());
 	}
 	
