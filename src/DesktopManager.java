@@ -17,6 +17,7 @@ public class DesktopManager {
 	private String popUpWindowHandle;
 	private final String[] pearsonIDs = {"username", "password"};
 	private final String[] APIDs = {"username", "password"};
+	private final String[] FrontlineIDs = {"Username", "Password"};
 	private final int GRADEBOOK_INDEX = 1;
 	private final int ATTENDANCE_INDEX = 2;
 	
@@ -160,10 +161,19 @@ public class DesktopManager {
 	
 
 //	This opens the login and uses finding by id to login, provided the html IDs by parameters
-	private void loginCustomQuicklink(QuickLinks customLink, String usernameID, String passwordID) {
+	private void loginCustomQuicklink(QuickLinks customLink, String usernameID, String passwordID) throws InterruptedException {
 //		logs in with html IDs
 		openLink(customLink);
-		WebElement username = driver.findElement(By.id(usernameID));
+		WebElement username;
+		while(true) {
+			try {
+				System.out.println("hi");
+				username = driver.findElement(By.id(usernameID));
+				break;
+			} catch(org.openqa.selenium.NoSuchElementException noSuchElementException) {
+				Thread.sleep(50);
+			}
+		}
 		WebElement password = driver.findElement(By.id(passwordID));
 		username.sendKeys(customLink.getUsername());
 		password.sendKeys(customLink.getPassword() + Keys.ENTER);
@@ -171,16 +181,34 @@ public class DesktopManager {
 
 	}
 	
-//	This is a method on its own to ensure modularity if something changes, I can fix this
+//	This is a method on its own to ensure modularity. if something changes, I can fix this
 //	method and the user interface will work for this class
 	public void loginPearson(QuickLinks pearsonLink) {
-		loginCustomQuicklink(pearsonLink, pearsonIDs[0],pearsonIDs[1]);
+		try {
+			loginCustomQuicklink(pearsonLink, pearsonIDs[0],pearsonIDs[1]);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
-//	This is a method on its own to ensure modularity if something changes, I can fix this
+//	This is a method on its own to ensure modularity. if something changes, I can fix this
 //	method and the user interface will work for this class
 	public void loginAPClassroom(QuickLinks APLink) {
-		loginCustomQuicklink(APLink, APIDs[0], APIDs[1]);
+		try {
+			loginCustomQuicklink(APLink, APIDs[0], APIDs[1]);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	
+//	This is a method on its own to ensure modularity. if something changes, I can fix this
+//	method and the user interface will work for this class
+	public void loginFrontline(QuickLinks frontlineLink) {
+		try {
+			loginCustomQuicklink(frontlineLink, FrontlineIDs[0], FrontlineIDs[1]);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 }

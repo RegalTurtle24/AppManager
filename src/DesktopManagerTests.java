@@ -31,19 +31,27 @@ public class DesktopManagerTests {
 //		assertTrue("this shouldn't fail", true);
 //	}
 //	
+//	@Test
 //	public void loginAP() {
 //		runner.loginAPClassroom(APLink);
 //		assertTrue("this should never fail", true);
 //	}
 //	
+//	@Test
 //	public void loginPearson() {
 //		runner.loginPearson(PearsonLink);
 //		assertTrue("this should never fail", true);
 //	}
+//	
 	@Test
-	public void loginSkywardthenOpenLWSD() {
-		runner.openSkywardAttendance(skywardLink);
-		runner.openLink(lwsdLink);
-		assertTrue("this shouldn't fail", true);
-	}
+	public void loginFrontline() {
+	runner.loginPearson(FrontlineLink);
+	assertTrue("this should never fail", true);
+}
+//	@Test
+//	public void loginSkywardthenOpenLWSD() {
+//		runner.openSkywardAttendance(skywardLink);
+//		runner.openLink(lwsdLink);
+//		assertTrue("this shouldn't fail", true);
+//	}
 }
