@@ -17,7 +17,6 @@ public class DesktopManager {
 	private String popUpWindowHandle;
 	private final String[] pearsonIDs = {"username", "password"};
 	private final String[] APIDs = {"username", "password"};
-	private final String[] FrontlineIDs = {"Username", "Password"};
 	private final int GRADEBOOK_INDEX = 1;
 	private final int ATTENDANCE_INDEX = 2;
 	
@@ -202,13 +201,4 @@ public class DesktopManager {
 		}
 	}
 	
-//	This is a method on its own to ensure modularity. if something changes, I can fix this
-//	method and the user interface will work for this class
-	public void loginFrontline(QuickLinks frontlineLink) {
-		try {
-			loginCustomQuicklink(frontlineLink, FrontlineIDs[0], FrontlineIDs[1]);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
 }
