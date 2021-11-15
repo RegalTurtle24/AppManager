@@ -123,7 +123,7 @@ public class FileManagerTests {
 		
 		assertEquals(false, FileManager.writeToFile(newName));
 		
-		for(int i = 0 ; i < 6 ; i++) {
+		for(int i = 0 ; i < 4 ; i++) {
 			FileManager.getNextSet();
 		}
 		
@@ -143,7 +143,7 @@ public class FileManagerTests {
 		assertEquals(true, FileManager.deleteSet("Skyward Grades"));
 		ArrayList<String> expected = new ArrayList<String>();
 		expected.add("Skyward Attendance");
-		expected.add("");
+		expected.add("https://www2.saas.wa-k12.net/scripts/cgiip.exe/WService=wlkwashs71/fwemnu01.w");
 		expected.add("");
 		expected.add("");
 		assertEquals(expected, FileManager.getNextSet());
