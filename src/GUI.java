@@ -96,7 +96,7 @@ public class GUI {
 		
 //			creates a quicklink to add to linkmanager, then adds the button that was
 //			input by the user if the button doesn't already exist and refreshes the screen
-			QuickLinks addition = new QuickLinks(usernameString, passwordString, nameString, websiteLinkString);
+			QuickLinks addition = new QuickLinks(usernameString, passwordString, websiteLinkString, nameString);
 			if(!websites.addLink(addition)){
 				FileManager.writeToFile(addition);
 				addButton(f, addition.getName());
