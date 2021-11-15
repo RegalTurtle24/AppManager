@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test;
 
 @TestMethodOrder(OrderAnnotation.class)
 public class FileManagerTests {	
+	
+//	Only works without a file in the directory already
 	@Test
 	@Order(1)
 	public void creationOfNewFile() {
@@ -34,6 +36,7 @@ public class FileManagerTests {
 		}
 	}
 	
+//	Only works without a file in the directory already
 	@Test
 	@Order(2)
 	public void seeFirstSet() {
@@ -48,13 +51,14 @@ public class FileManagerTests {
 		assertEquals(correctFirstSet, testFirstSet);
 	}
 	
+//	Only works without a file in the directory already
 	@Test
 	@Order(3)
 	public void seeSecondSet() {
 		
 		ArrayList<String> correctSecondSet = new ArrayList<String>();
 		correctSecondSet.add("Skyward Attendance");
-		correctSecondSet.add("");
+		correctSecondSet.add("https://www2.saas.wa-k12.net/scripts/cgiip.exe/WService=wlkwashs71/fwemnu01.w");
 		correctSecondSet.add("");
 		correctSecondSet.add("");
 		ArrayList<String> testSecondSet = FileManager.getNextSet();
@@ -75,40 +79,39 @@ public class FileManagerTests {
 		assertEquals(null, nextSet);
 	}
 	
+//	Only works without a file in the directory already
 	@Test
 	@Order(5)
-	public void writeToFileFrontline() {
-		ArrayList<String> newFrontline = new ArrayList<String>();
-		newFrontline.add("Frontline Absence Management");
-		newFrontline.add("user");
-		newFrontline.add("pass");
-		newFrontline.add("");
+	public void writeToFileNoLink() {
+		ArrayList<String> newData = new ArrayList<String>();
+		newData.add("Skyward Grades");
+		newData.add("");
+		newData.add("user");
+		newData.add("pass");
 		
-		assertEquals(true, FileManager.writeToFile(newFrontline));
+		assertEquals(true, FileManager.writeToFile(newData));
 		
-		FileManager.getNextSet();
-		FileManager.getNextSet();
+		newData.set(1, "https://www2.saas.wa-k12.net/scripts/cgiip.exe/WService=wlkwashs71/fwemnu01.w");
 		
-		assertEquals(newFrontline, FileManager.getNextSet());
+		assertEquals(newData, FileManager.getNextSet());
 	}
 	
+//	Only works without a file in the directory already
 	@Test
 	@Order(6)
-	public void writeToFileFrontLineOverride() {
-		ArrayList<String> newFrontline = new ArrayList<String>();
-		newFrontline.add("Frontline Absence Management");
-		newFrontline.add("link");
-		newFrontline.add("username");
-		newFrontline.add("password");
+	public void writeToFileLinkOverride() {
+		ArrayList<String> newData = new ArrayList<String>();
+		newData.add("Skyward Grades");
+		newData.add("google.com");
+		newData.add("username");
+		newData.add("password");
 		
-		assertEquals(true, FileManager.writeToFile(newFrontline));
+		assertEquals(true, FileManager.writeToFile(newData));
 		
-		FileManager.getNextSet();
-		FileManager.getNextSet();
-		
-		assertEquals(newFrontline, FileManager.getNextSet());
+		assertEquals(newData, FileManager.getNextSet());
 	}
 	
+//	Only works without a file in the directory already
 	@Test
 	@Order(7)
 	public void writeToFileNewName() {
@@ -133,6 +136,7 @@ public class FileManagerTests {
 		assertEquals(false, FileManager.deleteSet(""));
 	}
 	
+//	Only works without a file in the directory already
 	@Test
 	@Order(9)
 	public void deleteSet() {
