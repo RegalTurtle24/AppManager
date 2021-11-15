@@ -9,6 +9,7 @@ public class GUI {
 	private static ArrayList<String> websites = new ArrayList<String>();
 	static JFrame f;
 	private static int count;
+	private LinkManager linkManager  = new LinkManager();
 	
 	// purpose: creates instance of GUI, while also setup frame and count
 	// input: nothing
@@ -59,8 +60,9 @@ public class GUI {
 		    		createNewLink();
 		    	} else if (e.getModifiers() == 17) {
 		    		f.remove(temp);
-		    		websites.remove(name);
-		    		visuals(f, websites);
+		    		linkManager.deleteLink(name);
+		    		//websites.remove(name);
+		    		//visuals(f, websites);
 		    	} else {
 		    		System.out.println("call runner");
 		    	}
