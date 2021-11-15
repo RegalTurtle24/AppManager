@@ -120,10 +120,13 @@ public class GUI {
 		if (result == JOptionPane.OK_OPTION) {
 			usernameString = username.getText();
 			passwordString = password.getText();
-			websites.addCredentials(name, usernameString, passwordString);
-			
-		}
-		
+			if(name.equals("Skyward Attendance")||name.equals("Skyward Grades")) {
+				websites.addCredentials("Skyward Attendance", usernameString, passwordString);
+				websites.addCredentials("Skyward Grades" , usernameString, passwordString);
 
+			}else {
+				websites.addCredentials(name, usernameString, passwordString);
+			}
+		}
 	}
 }
