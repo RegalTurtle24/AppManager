@@ -45,7 +45,8 @@ public class GUI {
 					System.out.println("creating new link");
 					createNewLink();
 				} else {
-					System.out.println("call runner");
+//					System.out.println("call runner");
+					System.out.println(temp.getText());
 				}
 			}
 		});
@@ -93,12 +94,11 @@ public class GUI {
 			System.out.println("username: " + usernameString);
 			System.out.println("password: " + passwordString);
 		
-//			creates a quicklink to add to linkmanager, then addes the button that was
-//			input by the user if the button doesn't already exist
+//			creates a quicklink to add to linkmanager, then adds the button that was
+//			input by the user if the button doesn't already exist and refreshes the screen
 			QuickLinks addition = new QuickLinks(usernameString, passwordString, nameString, websiteLinkString);
 			if(!websites.addLink(addition)){
 				FileManager.writeToFile(addition);
-				System.out.println("enetering visuals");
 				addButton(f, addition.getName());
 				f.validate();
 			}			
