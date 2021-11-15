@@ -45,6 +45,7 @@ public class GUI {
 				} else {
 //					System.out.println("call runner");
 					System.out.println(temp.getText());
+					editCredentials(temp.getText());
 				}
 			}
 		});
@@ -114,7 +115,7 @@ public class GUI {
 
 		// where to input stuff for a new link
 		int result = JOptionPane.showConfirmDialog(null, myPanel,
-				"Please enter the following information for the new link", JOptionPane.OK_CANCEL_OPTION);
+				"Please enter the following information to edit the link of " + name, JOptionPane.OK_CANCEL_OPTION);
 		if (result == JOptionPane.OK_OPTION) {
 			usernameString = username.getText();
 			passwordString = password.getText();
