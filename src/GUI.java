@@ -97,6 +97,7 @@ public class GUI {
 		}
 	}
 	
+	//allows user to edit the credentials of the button they press
 	public void editCredentials(String name) {
 		JTextField username = new JTextField(10);
 		JTextField password = new JTextField(10);
