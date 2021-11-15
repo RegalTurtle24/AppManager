@@ -58,27 +58,17 @@ public class FileManager {
 				fw.write("\n");
 				
 				fw.write("Skyward Attendance\n");
-				fw.write("\n");
-				fw.write("\n");
-				fw.write("\n");
-				
-				fw.write("Frontline Absence Management\n");
-				fw.write("\n");
-				fw.write("\n");
-				fw.write("\n");
-				
-				fw.write("Frontline Evaluations\n");
-				fw.write("\n");
+				fw.write("https://www2.saas.wa-k12.net/scripts/cgiip.exe/WService=wlkwashs71/fwemnu01.w\n");
 				fw.write("\n");
 				fw.write("\n");
 				
 				fw.write("AP Classroom\n");
-				fw.write("\n");
+				fw.write("https://myap.collegeboard.org/login\n");
 				fw.write("\n");
 				fw.write("\n");
 				
 				fw.write("Pearson's Mastering Biology\n");
-				fw.write("\n");
+				fw.write("https://login.pearson.com/v1/piapi/piui/signin?client_id=dN4bOBG0sGO9c9HADrifwQeqma5vjREy&okurl=https:%2F%2Fportal.mypearson.com%2Fcourse-home&siteid=8313\n");
 				fw.write("\n");
 				fw.write("\n");
 				
