@@ -7,10 +7,12 @@ import javax.swing.*;
 public class GUI {
 	private static LinkManager websites;
 	static JFrame f;
+	private static DesktopManager deskMan;
 
 	public GUI() {
 		websites = new LinkManager();
 		f = new JFrame();
+		deskMan = new DesktopManager();
 	}
 
 	public void run() {
@@ -40,12 +42,17 @@ public class GUI {
 			public void actionPerformed(ActionEvent e) {
 				// the print statements are temporary; i will call other classes here
 				if (name.equals("new link")) {
-					System.out.println("creating new link");
 					createNewLink();
+				} else if (name.equals("Skyward Grades")) {
+					deskMan.openSkywardGrading(websites.getLink("Skyward Grades"));
+				} else if (name.equals("Skyward Attendance")) {
+					deskMan.openSkywardAttendance(websites.getLink("Skyward Attendance"));
+				} else if (name.equals("AP Classroom")) {
+					deskMan.loginAPClassroom(websites.getLink("AP Classroom"));
+				} else if (name.equals("Pearson's Mastering Biology")) {
+					deskMan.loginPearson(websites.getLink("Pearson's Mastering Biology"));
 				} else {
-//					System.out.println("call runner");
-					System.out.println(temp.getText());
-					editCredentials(temp.getText());
+					deskMan.openLink(websites.getLink(name));
 				}
 			}
 		});
@@ -93,7 +100,7 @@ public class GUI {
 			if(!NewQuickLink.createNewQuickLink(usernameString, passwordString, websiteLinkString, nameString, websites)){
 				buttonPressed(f, nameString);
 				f.validate();
-			}			
+			}
 		}
 	}
 	
