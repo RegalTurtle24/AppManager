@@ -7,10 +7,12 @@ import javax.swing.*;
 public class GUI {
 	private static LinkManager websites;
 	static JFrame f;
+	private DesktopManager deskMan;
 
 	public GUI() {
 		websites = new LinkManager();
 		f = new JFrame();
+		deskMan = new DesktopManager();
 	}
 
 	public void run() {
@@ -41,32 +43,29 @@ public class GUI {
 				// the print statements are temporary; i will call other classes here
 				if (name.equals("new link")) {
 					createNewLink();
-				} else if (name.equals("Skyward Grades")) {
-					QuickLinks skyward = websites.getLink("Skyward Grades");
-					if(skyward.getPassword() == "" || skyward.getUsername() == "") {
-						editCredentials("Skyward Grades");
-					}
-					deskMan.openSkywardGrading(websites.getLink("Skyward Grades"));
-				} else if (name.equals("Skyward Attendance")) {
-					QuickLinks skyward = websites.getLink("Skyward Attendance");
-					if(skyward.getPassword() == "" || skyward.getUsername() == "") {
-						editCredentials("Skyward Attendance");
-					}
-					deskMan.openSkywardAttendance(websites.getLink("Skyward Attendance"));
-				} else if (name.equals("AP Classroom")) {
-					QuickLinks apclassroom = websites.getLink("AP Classroom");
-					if(apclassroom.getPassword() == "" || apclassroom.getUsername() == "") {
-						editCredentials("AP Classroom");
-					}
-					deskMan.loginAPClassroom(websites.getLink("AP Classroom"));
-				} else if (name.equals("Pearson's Mastering Biology")) {
-					QuickLinks pearsons = websites.getLink("Pearson's Mastering Biology");
-					if(pearsons.getPassword() == "" || pearsons.getUsername() == "") {
-						editCredentials("Pearson's Mastering Biology");
-					}
-					deskMan.loginPearson(websites.getLink("Pearson's Mastering Biology"));
 				} else {
-					deskMan.openLink(websites.getLink(name));
+					QuickLinks link = websites.getLink(name);
+					if(name.equals("Skyward Grades") || name.equals("Skyward Attendance")) {
+						if(link.getPassword() == "" || link.getUsername() == "") {
+							editCredentials("Skyward Grades");
+						}else if(name.equals("Skyward Grades")) {
+							deskMan.openSkywardGrading(link);
+						}else if (name.equals("Skyward Attendance")) {
+							deskMan.openSkywardAttendance(websites.getLink("Skyward Attendance"));
+						}
+					} else{
+						if(link.getPassword().equals("") || link.getUsername().equals('"')) {
+							editCredentials(link.getName());
+						}else {
+							if (name.equals("AP Classroom")) {
+								deskMan.loginAPClassroom(link);
+							} else if (name.equals("Pearson's Mastering Biology")) {
+								deskMan.loginPearson(link);
+							} else {
+								deskMan.openLink(link);
+							}
+						}
+					}
 				}
 			}
 		});
