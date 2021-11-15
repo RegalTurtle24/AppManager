@@ -10,11 +10,18 @@ public class GUI {
 	static JFrame f;
 	private static int count;
 	
+	// purpose: creates instance of GUI, while also setup frame and count
+	// input: nothing
+	// output: GUI, JFrame, and count of 0
 	public GUI() {
 		f = new JFrame();
 		count = 0;
 	}
 	
+	// purpose: makes sure that GUI closes when exited out, also
+	// sets up buttons for AP Classroom, Pearson's Mastering Biology, and creating new link
+	// input: is run
+	// output: GUI with buttons for AP Classroom, Pearson's Mastering Biology, and creating new Links
 	public void run() {  
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//presets
@@ -24,19 +31,24 @@ public class GUI {
 		addButton(f, "new link");		
 		visuals(f, websites);
 	}  
-	
-	//creating the buttons
+
+	// purpose: creates buttons on GUI for links current listed in the websites Arraylist
+	// input: JFrame, website arrayList
+	// output: buttons for website displayed on GUI
 	public void visuals(JFrame f, ArrayList<String> websites) {
-		for(int i = count; i < websites.size(); i++) {
+		for(int i = count; i < websites.size(); i++) { 
 			addButton(f, websites.get(i));
 			count++;
 		}
-		f.setLayout(new GridLayout(4,3, 10, 10));    
+		f.setLayout(new GridLayout(4,3, 10, 10));  
 		f.setSize(1370,730);    
 		f.setVisible(true); 
 	}
 	
-	//adding a button
+	// purpose: creates a button that can either create new links or call other methods
+	// this method also insures that buttons and links are deleted with shift-click
+	// input: JFrame, button name
+	// output: functioning buttons that can access websites or create new links
 	public void addButton(JFrame f, String name) {
 		JButton temp = new JButton(name);  
 		temp.addActionListener(new ActionListener(){  
@@ -45,6 +57,10 @@ public class GUI {
 		    	if(name.equals("new link")) {
 		    		System.out.println("creating new link");
 		    		createNewLink();
+		    	} else if (e.getModifiers() == 17) {
+		    		f.remove(temp);
+		    		websites.remove(name);
+		    		visuals(f, websites);
 		    	} else {
 		    		System.out.println("call runner");
 		    	}
@@ -53,7 +69,9 @@ public class GUI {
 		f.add(temp);
 	}
 	
-	//creating a new link
+	// purpose: prompts user to create new link
+	// input: name, link, username, password
+	// output: button with new quicklink
 	public void createNewLink() {
 	    JTextField name = new JTextField(10);
 	    JTextField websiteLink = new JTextField(10);
