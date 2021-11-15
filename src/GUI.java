@@ -40,18 +40,40 @@ public class GUI {
 			public void actionPerformed(ActionEvent e) {
 				// the print statements are temporary; i will call other classes here
 				if (name.equals("new link")) {
-					System.out.println("creating new link");
 					createNewLink();
+				} else if (name.equals("Skyward Grades")) {
+					QuickLinks skyward = websites.getLink("Skyward Grades");
+					if(skyward.getPassword() == "" || skyward.getUsername() == "") {
+						editCredentials("Skyward Grades");
+					}
+					deskMan.openSkywardGrading(websites.getLink("Skyward Grades"));
+				} else if (name.equals("Skyward Attendance")) {
+					QuickLinks skyward = websites.getLink("Skyward Attendance");
+					if(skyward.getPassword() == "" || skyward.getUsername() == "") {
+						editCredentials("Skyward Attendance");
+					}
+					deskMan.openSkywardAttendance(websites.getLink("Skyward Attendance"));
+				} else if (name.equals("AP Classroom")) {
+					QuickLinks apclassroom = websites.getLink("AP Classroom");
+					if(apclassroom.getPassword() == "" || apclassroom.getUsername() == "") {
+						editCredentials("AP Classroom");
+					}
+					deskMan.loginAPClassroom(websites.getLink("AP Classroom"));
+				} else if (name.equals("Pearson's Mastering Biology")) {
+					QuickLinks pearsons = websites.getLink("Pearson's Mastering Biology");
+					if(pearsons.getPassword() == "" || pearsons.getUsername() == "") {
+						editCredentials("Pearson's Mastering Biology");
+					}
+					deskMan.loginPearson(websites.getLink("Pearson's Mastering Biology"));
 				} else {
-//					System.out.println("call runner");
-					System.out.println(temp.getText());
-					editCredentials(temp.getText());
+					deskMan.openLink(websites.getLink(name));
 				}
 			}
 		});
 		f.add(temp);
 	}
-
+  
+  
 	// creating a new link
 	public void createNewLink() {
 		JTextField name = new JTextField(10);
