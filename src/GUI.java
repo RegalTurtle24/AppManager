@@ -15,16 +15,13 @@ public class GUI {
 
 	public void run() {
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// presets
-//		websites.add("AP Classroom");
-//		websites.add("Pearson's Mastering Biology");
 		// stuff here to call sam's class
 		addButton(f, "new link");
-		visuals(f);
+		setPresets(f);
 	}
 
 	// creating the buttons, should only be called once
-	public void visuals(JFrame f) {
+	public void setPresets(JFrame f) {
 		ArrayList<QuickLinks> websitesList = new ArrayList<QuickLinks>(websites.getHashMap().values());
 
 		for (int i = 0; i < websitesList.size(); i++) {
@@ -88,18 +85,11 @@ public class GUI {
 			usernameString = username.getText();
 			passwordString = password.getText();
 
-			// temporary
-			System.out.println("name: " + nameString);
-			System.out.println("website link: " + websiteLinkString);
-			System.out.println("username: " + usernameString);
-			System.out.println("password: " + passwordString);
 		
 //			creates a quicklink to add to linkmanager, then adds the button that was
 //			input by the user if the button doesn't already exist and refreshes the screen
-			QuickLinks addition = new QuickLinks(usernameString, passwordString, nameString, websiteLinkString);
-			if(!websites.addLink(addition)){
-				FileManager.writeToFile(addition);
-				addButton(f, addition.getName());
+			if(!NewQuickLink.createNewQuickLink(usernameString, passwordString, websiteLinkString, nameString, websites)){
+				addButton(f, nameString);
 				f.validate();
 			}			
 		}
