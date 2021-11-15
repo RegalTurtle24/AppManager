@@ -7,12 +7,10 @@ import javax.swing.*;
 public class GUI {
 	private static LinkManager websites;
 	static JFrame f;
-	private static DesktopManager deskMan;
 
 	public GUI() {
 		websites = new LinkManager();
 		f = new JFrame();
-		deskMan = new DesktopManager();
 	}
 
 	public void run() {
@@ -74,7 +72,8 @@ public class GUI {
 		});
 		f.add(temp);
 	}
-
+  
+  
 	// creating a new link
 	public void createNewLink() {
 		JTextField name = new JTextField(10);
@@ -116,7 +115,7 @@ public class GUI {
 			if(!NewQuickLink.createNewQuickLink(usernameString, passwordString, websiteLinkString, nameString, websites)){
 				buttonPressed(f, nameString);
 				f.validate();
-			}
+			}			
 		}
 	}
 	
@@ -143,10 +142,13 @@ public class GUI {
 		if (result == JOptionPane.OK_OPTION) {
 			usernameString = username.getText();
 			passwordString = password.getText();
-			websites.addCredentials(name, usernameString, passwordString);
-			
-		}
-		
+			if(name.equals("Skyward Attendance")||name.equals("Skyward Grades")) {
+				websites.addCredentials("Skyward Attendance", usernameString, passwordString);
+				websites.addCredentials("Skyward Grades" , usernameString, passwordString);
 
+			}else {
+				websites.addCredentials(name, usernameString, passwordString);
+			}
+		}
 	}
 }
