@@ -95,8 +95,11 @@ public class GUI {
 			System.out.println("website link: " + websiteLinkString);
 			System.out.println("username: " + usernameString);
 			System.out.println("password: " + passwordString);
-
-//			websites.add(nameString);
+			
+			QuickLinks addition = new QuickLinks(usernameString, passwordString, nameString, websiteLinkString);
+			websites.addLink(addition);
+			websitesList.add(0,addition);
+			//FileManager()
 
 			visuals(f);
 		}
