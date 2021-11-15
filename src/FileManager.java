@@ -82,6 +82,18 @@ public class FileManager {
 		}
 	}
 	
+	// Purpose: use writeToFile but with a QuickLink instead of an ArrayList
+	// Input: Quicklink
+	// Output: call writeToFile (below)
+	public static boolean writeToFile(QuickLinks ql) {
+		ArrayList<String> arr = new ArrayList<String>();
+		arr.add(ql.getName());
+		arr.add(ql.getUrl());
+		arr.add(ql.getUsername());
+		arr.add(ql.getPassword());
+		return writeToFile(arr);
+	}
+	
 	// Purpose: Write a new set of information at the bottom of the file or where 1st parameter
 	// (name) is found
 	// Input: ArrayList of parameters to be added
