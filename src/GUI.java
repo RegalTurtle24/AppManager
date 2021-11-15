@@ -5,16 +5,12 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 public class GUI {
-	private static ArrayList<QuickLinks> websitesList = new ArrayList<QuickLinks>();
 	private static LinkManager websites;
 	static JFrame f;
-	private static int count;
 
 	public GUI() {
 		websites = new LinkManager();
-		websitesList = new ArrayList<QuickLinks>(websites.getHashMap().values());
 		f = new JFrame();
-		count = 0;
 	}
 
 	public void run() {
@@ -27,11 +23,12 @@ public class GUI {
 		visuals(f);
 	}
 
-	// creating the buttons
+	// creating the buttons, should only be called once
 	public void visuals(JFrame f) {
-		for (int i = count; i < websitesList.size(); i++) {
+		ArrayList<QuickLinks> websitesList = new ArrayList<QuickLinks>(websites.getHashMap().values());
+
+		for (int i = 0; i < websitesList.size(); i++) {
 			addButton(f, websitesList.get(i).getName());
-			count++;
 		}
 		f.setLayout(new GridLayout(4, 3, 10, 10));
 		f.setSize(1370, 730);
@@ -95,13 +92,15 @@ public class GUI {
 			System.out.println("website link: " + websiteLinkString);
 			System.out.println("username: " + usernameString);
 			System.out.println("password: " + passwordString);
-			
+		
+//			creates a quicklink to add to linkmanager, then addes the button that was
+//			input by the user if the button doesn't already exist
 			QuickLinks addition = new QuickLinks(usernameString, passwordString, nameString, websiteLinkString);
 			if(!websites.addLink(addition)){
-				websitesList.add(0,addition);
 				FileManager.writeToFile(addition);
-
-				visuals(f);
+				System.out.println("enetering visuals");
+				addButton(f, addition.getName());
+				f.validate();
 			}			
 		}
 	}
