@@ -1,0 +1,88 @@
+Website Manager
+
+Overall Goal: 
+	To create a program (GUI) where you can store usernames and passwords, and then with one click, 
+	be able to automatically open a variety of programs for some activity 
+	(i.e., grading window from skyward pops up without having to navigate there). 
+
+Use Cases:
+
+	Use Case: Accessing Programs
+	Actor: User - Teacher
+	Flow:
+		When opening the program, a tab will appear including options to access Skyward gradebook, skyward attendance, 
+		create new assignments on teams, email/outlook, frontline absence management, frontline – evaluation. 
+	Alternating flow 0: 
+		If the teacher clicks on Skyward gradebook, the program opens chrome and automatically logs into Skyward. 
+		Without user input it will navigate to Skyward gradebook. 
+	Alternating flow 1: 
+		If the teacher clicks on Skyward attendance, the program opens chrome and automatically logs into Skyward. 
+		Without user input it will navigate to Skyward attendance. 
+	Alternating flow 2:
+		If the teacher clicks on creating new assignments on teams, the program opens teams and logs in if necessary. 
+		Without user input it will navigate to assignments on teams. 
+	Alternating flow 3:
+		If the teacher clicks on email/outlook, the program opens outlook in chrome and logs in if necessary. 
+	Alternating flow 4:
+		If the teacher clicks on frontline absence management, the program opens frontline and logs in if necessary. 
+		Without user input it will navigate to absence management on frontline.
+	Alternating flow 5:
+		If the teacher clicks on frontline evaluations, the program opens frontline and logs in if necessary. 
+		Without user input it will navigate to evaluations on frontline. 
+
+	Use Case: Accessing Programs
+	Actor: User - Teacher
+	Flow:
+		When opening the program, a tab will appear which will include the option to create a new link. 
+		The user clicks on that option, and it brings up a new tab in which the user can input an app or 
+		website they want access to along with username or password. After the user inputs that information 
+		it returns to the main program tab in which the new quick link is added.  
+
+Project Restrictions:
+	Take up as little space as possible, doesn’t take up all space on the hard drive 
+	Computer stays usable before and after the main part of the app runs (opening all 3 windows) 
+	Must be more efficient/take less time than manually opening programs and signing in to them 
+
+External Resources: 
+	Websites that Mr. Danaee needs to sign into* 
+	Swing to make a GUI 
+	Google chrome to open any websites 
+	Robot class and/or Selenium to automate moving through webpages 
+	Passwords stored in a local folder (possibly encrypted), so the passwords are not shared on any cloud service* 
+	Teams API that allows us to navigate through the application 
+	Stored as addresses in an external text document*
+
+Requirements 
+	Must have: 
+		The ability to store usernames and passwords.   
+		Ability to access and open Google Chrome 
+		Ability to automatically log into specified websites 
+		Ability to automatically navigate through webpages 
+	Nice to have: 
+		Ability for the user to add new quick links to the program 
+	Time permitting:
+		Ability to open Mutiple bowsers from one quick link 
+		Keeping everything to one window when applicable  
+		Encryption on local folder storing usernames and passwords 
+		Visual security precautions when inputting passwords (changing password characters to dots)
+
+Clarifications from Mr. Danaee: 
+	Quick links to the following would be required: 
+	Skyward - gradebook 
+	Skyward - attendance
+	Frontline - absence management 
+	Frontline - evaluations 
+	Wishlist: The ability to add new quick links myself as needed. (i.e. AP Classroom, Mastering Biology, ExploreLearing, etc) 
+
+Timeline:  
+	First Draft of Product Specification completed by October 22, 2021
+	Skeleton APIs completed by October 29, 2021
+	Work on NewQuickLinks from November 1st, 2021 -November 4th, 2021
+	Work on LinkManager addCredentials from November 5th, 2021 - November 12th, 2021
+	NewQuickLinks completed and merged November 11th, 2021
+	LinkManager addCredentials completed and merged November 12th, 2021
+	Project completed November 15th, 2021
+
+
+
+
