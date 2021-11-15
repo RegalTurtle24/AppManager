@@ -22,8 +22,9 @@ public class GUI {
 
 	// creating the buttons, should only be called once
 	public void setPresets(JFrame f) {
+		
+		//gets an array to iterate through all websites
 		ArrayList<QuickLinks> websitesList = new ArrayList<QuickLinks>(websites.getHashMap().values());
-
 		for (int i = 0; i < websitesList.size(); i++) {
 			buttonPressed(f, websitesList.get(i).getName());
 		}
@@ -93,5 +94,34 @@ public class GUI {
 				f.validate();
 			}			
 		}
+	}
+	
+	public void editCredentials(String name) {
+		JTextField username = new JTextField(10);
+		JTextField password = new JTextField(10);
+
+		JPanel myPanel = new JPanel();
+		myPanel.add(Box.createVerticalStrut(15));
+		myPanel.add(new JLabel("username: "));
+		myPanel.add(username);
+		myPanel.add(Box.createVerticalStrut(15));
+		myPanel.add(new JLabel("password:"));
+		myPanel.add(password);
+
+		// stuff to give to runner:
+		String usernameString;
+		String passwordString;
+
+		// where to input stuff for a new link
+		int result = JOptionPane.showConfirmDialog(null, myPanel,
+				"Please enter the following information for the new link", JOptionPane.OK_CANCEL_OPTION);
+		if (result == JOptionPane.OK_OPTION) {
+			usernameString = username.getText();
+			passwordString = password.getText();
+			websites.addCredentials(name, usernameString, passwordString);
+			
+		}
+		
+
 	}
 }
