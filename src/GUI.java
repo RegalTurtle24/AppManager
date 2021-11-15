@@ -97,11 +97,12 @@ public class GUI {
 			System.out.println("password: " + passwordString);
 			
 			QuickLinks addition = new QuickLinks(usernameString, passwordString, nameString, websiteLinkString);
-			websites.addLink(addition);
-			websitesList.add(0,addition);
-			//FileManager()
+			if(!websites.addLink(addition)){
+				websitesList.add(0,addition);
+				FileManager.writeToFile(addition);
 
-			visuals(f);
+				visuals(f);
+			}			
 		}
 	}
 }
