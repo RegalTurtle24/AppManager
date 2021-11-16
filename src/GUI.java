@@ -112,7 +112,7 @@ public class GUI {
 
 		JPanel myPanel = new JPanel();
 		myPanel.add(Box.createVerticalStrut(15));
-		myPanel.add(new JLabel("username: "));
+		myPanel.add(new JLabel("username (make sure to include https://): "));
 		myPanel.add(username);
 		myPanel.add(Box.createVerticalStrut(15));
 		myPanel.add(new JLabel("password:"));
