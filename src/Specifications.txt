@@ -75,14 +75,33 @@ Clarifications from Mr. Danaee:
 	Wishlist: The ability to add new quick links myself as needed. (i.e. AP Classroom, Mastering Biology, ExploreLearing, etc) 
 
 Timeline:  
-	First Draft of Product Specification completed by October 22, 2021
-	Skeleton APIs completed by October 29, 2021
-	Work on NewQuickLinks from November 1st, 2021 -November 4th, 2021
-	Work on LinkManager addCredentials from November 5th, 2021 - November 12th, 2021
-	NewQuickLinks completed and merged November 11th, 2021
-	LinkManager addCredentials completed and merged November 12th, 2021
-	Project completed November 15th, 2021
-
-
+	First Draft of Product Specification completed by October 22, 2021 
+	Marko worked on downloading selenium October 26 – 27
+	Atharv worked on the QuickLinks constructor and accessor methods October 26-27 
+	Leane worked on GUI visuals October 27 – 28 
+	Atharv worked on the QuickLinks mutator methods October 27-28 
+	Marko configured eclipse project to maven project October 28 – 29 plans had to change plans because code couldn’t compile on school computers 
+	Thys divided FileManager into two classes, created new skeleton API for both 
+	Skeleton APIs completed by October 29 
+	Marko finding alternative to Maven in Selenium November 1 - 8 
+	Leane worked on GUI newButton November 1 
+	Thys worked on default file creation November 1-2 
+	Leane worked on GUI createNewLink November 2 - 5 
+	Thys worked on reading file with getNextSet November 3 - 4 
+	Samuel worked on NewQuickLinks from November 1 – 4 
+	Atharv worked on addLink in LinkManager on November 4 
+	Thys worked on editing file through writeToFile November 5 - 8 
+	Atharv worked on getLink in LinkManager on November 5 
+	Leane worked on GUI createNewLink November 7 - 9 
+	Samuel worked on LinkManager addCredentials from November 5 - 12 
+	Marko worked on DesktopManager November 9 - 13 
+	Thys finished constructor for FileManager November 9 
+	Samuel completed and merged NewQuickLinks November 11 
+	Thys started and submitted methods in FileManager and LinkManager November 12 
+	Samuel completed and merged LinkManager addCredentials November 12 
+	Leane worked on adapting GUI to work dependently November 12 – 15 
+	Atharv worked on making GUI work with LinkManager November 15 
+	Thys and Marko worked on GUI so that it interacts with DesktopManager, NewQuickLink, and FileManager November 15th 
+	Project completed November 15th 
 
 
