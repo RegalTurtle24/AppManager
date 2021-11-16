@@ -40,30 +40,25 @@ public class GUI {
 		JButton temp = new JButton(name);
 		temp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// the print statements are temporary; i will call other classes here
+				// if new link button is pressed, new link fucntion called, otherwise the presets
+				// and already created buttons are called
 				if (name.equals("new link")) {
 					createNewLink();
 				} else {
 					QuickLinks link = websites.getLink(name);
-					if(name.equals("Skyward Grades") || name.equals("Skyward Attendance")) {
-						if(link.getPassword() == "" || link.getUsername() == "") {
-							editCredentials("Skyward Grades");
-						}else if(name.equals("Skyward Grades")) {
+					if(link.getPassword().equals("") || link.getUsername().equals("")) {
+						editCredentials(link.getName());
+					}else {
+						if (name.equals("AP Classroom")) {
+							deskMan.loginAPClassroom(link);
+						} else if (name.equals("Pearson's Mastering Biology")) {
+							deskMan.loginPearson(link);
+						} else if(name.equals("Skyward Attendance")) {
+							deskMan.openSkywardAttendance(link);
+						} else if(name.equals("Skyward Grades")) {
 							deskMan.openSkywardGrading(link);
-						}else if (name.equals("Skyward Attendance")) {
-							deskMan.openSkywardAttendance(websites.getLink("Skyward Attendance"));
-						}
-					} else{
-						if(link.getPassword().equals("") || link.getUsername().equals('"')) {
-							editCredentials(link.getName());
 						}else {
-							if (name.equals("AP Classroom")) {
-								deskMan.loginAPClassroom(link);
-							} else if (name.equals("Pearson's Mastering Biology")) {
-								deskMan.loginPearson(link);
-							} else {
-								deskMan.openLink(link);
-							}
+							deskMan.openLink(link);
 						}
 					}
 				}

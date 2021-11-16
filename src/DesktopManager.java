@@ -43,9 +43,6 @@ public class DesktopManager {
 		}
 		
 		driver.switchTo().newWindow(WindowType.TAB);
-		for (String windowHandle : driver.getWindowHandles()) {
-		    System.out.println(windowHandle);
-		}
 		
 		//		driver.switchTo().newTAB(WindowType.TAB);
 		driver.get(customLink.getUrl());
@@ -116,7 +113,6 @@ public class DesktopManager {
 		WebElement menu;
 		while(true) {
 			try {
-				System.out.println("hi");
 				menu = driver.findElement(By.id("sf_navMenu"));
 				break;
 			} catch(org.openqa.selenium.NoSuchElementException noSuchElementException) {
@@ -128,7 +124,6 @@ public class DesktopManager {
 		int attempts = 0;
 	    while(attempts < 4) {
 	        try {
-	        	System.out.println("clicking menu");
 	        	menuItem.click();
 	        	Thread.sleep(500);
 	        } catch(org.openqa.selenium.StaleElementReferenceException e) {
@@ -166,7 +161,6 @@ public class DesktopManager {
 		WebElement username;
 		while(true) {
 			try {
-				System.out.println("hi");
 				username = driver.findElement(By.id(usernameID));
 				break;
 			} catch(org.openqa.selenium.NoSuchElementException noSuchElementException) {
