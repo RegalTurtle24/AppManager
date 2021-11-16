@@ -72,8 +72,7 @@ public class GUI {
 	public void createNewLink() {
 		JTextField name = new JTextField(10);
 		JTextField websiteLink = new JTextField(10);
-		JTextField username = new JTextField(10);
-		JTextField password = new JTextField(10);
+		
 
 		JPanel myPanel = new JPanel();
 		myPanel.add(new JLabel("name: "));
@@ -82,17 +81,12 @@ public class GUI {
 		myPanel.add(new JLabel("website link (to login page):"));
 		myPanel.add(websiteLink);
 		myPanel.add(Box.createVerticalStrut(15));
-		myPanel.add(new JLabel("username: "));
-		myPanel.add(username);
-		myPanel.add(Box.createVerticalStrut(15));
-		myPanel.add(new JLabel("password:"));
-		myPanel.add(password);
 
 		// stuff to give to runner:
 		String nameString;
 		String websiteLinkString;
-		String usernameString;
-		String passwordString;
+		String usernameString = "placeholder";
+		String passwordString = "placeholder";
 
 		// where to input stuff for a new link
 		int result = JOptionPane.showConfirmDialog(null, myPanel,
@@ -100,8 +94,6 @@ public class GUI {
 		if (result == JOptionPane.OK_OPTION) {
 			nameString = name.getText();
 			websiteLinkString = websiteLink.getText();
-			usernameString = username.getText();
-			passwordString = password.getText();
 
 		
 //			creates a quicklink to add to linkmanager, then adds the button that was
@@ -145,4 +137,7 @@ public class GUI {
 			}
 		}
 	}
+	
+	//opening user message to tell the user to enter in anything for the new links, so they don't
+	//have to 
 }
