@@ -35,7 +35,6 @@ public class DesktopManager {
 //		this is to ensure the driver is not on the skyward pop-up window
 		if(popUpWindowHandle.contentEquals(driver.getWindowHandle())) {
 			try {
-				System.out.print("calling SwitchFrom in openLink");
 				switchFromPopUpWindow();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -43,9 +42,6 @@ public class DesktopManager {
 		}
 		
 		driver.switchTo().newWindow(WindowType.TAB);
-		for (String windowHandle : driver.getWindowHandles()) {
-		    System.out.println(windowHandle);
-		}
 		
 		//		driver.switchTo().newTAB(WindowType.TAB);
 		driver.get(customLink.getUrl());
@@ -54,13 +50,10 @@ public class DesktopManager {
 	//This method should only ever be called once
 	//opens skyward login and enters the credentials after finding the html ids for each login box
 	private void loginSkyward(QuickLinks skyward) throws InterruptedException{
-		//to make sure this only gets called once
-		System.out.println("loginSkyward called");
 		//stores how many tabs are before pop-up is created
 		int numTabs = driver.getWindowHandles().size();
 		
 		openLink(skyward);
-		System.out.println(driver.getWindowHandle());
 		WebElement loginUser = driver.findElement(By.id("login"));
 		loginUser.sendKeys(skyward.getUsername());
 		WebElement loginPass = driver.findElement(By.id("password"));
@@ -116,7 +109,6 @@ public class DesktopManager {
 		WebElement menu;
 		while(true) {
 			try {
-				System.out.println("hi");
 				menu = driver.findElement(By.id("sf_navMenu"));
 				break;
 			} catch(org.openqa.selenium.NoSuchElementException noSuchElementException) {
@@ -128,7 +120,6 @@ public class DesktopManager {
 		int attempts = 0;
 	    while(attempts < 4) {
 	        try {
-	        	System.out.println("clicking menu");
 	        	menuItem.click();
 	        	Thread.sleep(500);
 	        } catch(org.openqa.selenium.StaleElementReferenceException e) {
@@ -166,7 +157,6 @@ public class DesktopManager {
 		WebElement username;
 		while(true) {
 			try {
-				System.out.println("hi");
 				username = driver.findElement(By.id(usernameID));
 				break;
 			} catch(org.openqa.selenium.NoSuchElementException noSuchElementException) {

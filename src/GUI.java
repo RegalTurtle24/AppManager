@@ -7,7 +7,7 @@ import javax.swing.*;
 public class GUI {
 	private static LinkManager websites;
 	static JFrame f;
-	private static DesktopManager deskMan;
+	private DesktopManager deskMan;
 
 	public GUI() {
 		websites = new LinkManager();
@@ -40,47 +40,39 @@ public class GUI {
 		JButton temp = new JButton(name);
 		temp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// the print statements are temporary; i will call other classes here
+				// if new link button is pressed, new link fucntion called, otherwise the presets
+				// and already created buttons are called
 				if (name.equals("new link")) {
 					createNewLink();
-				} else if (name.equals("Skyward Grades")) {
-					QuickLinks skyward = websites.getLink("Skyward Grades");
-					if(skyward.getPassword() == "" || skyward.getUsername() == "") {
-						editCredentials("Skyward Grades");
-					}
-					deskMan.openSkywardGrading(websites.getLink("Skyward Grades"));
-				} else if (name.equals("Skyward Attendance")) {
-					QuickLinks skyward = websites.getLink("Skyward Attendance");
-					if(skyward.getPassword() == "" || skyward.getUsername() == "") {
-						editCredentials("Skyward Attendance");
-					}
-					deskMan.openSkywardAttendance(websites.getLink("Skyward Attendance"));
-				} else if (name.equals("AP Classroom")) {
-					QuickLinks apclassroom = websites.getLink("AP Classroom");
-					if(apclassroom.getPassword() == "" || apclassroom.getUsername() == "") {
-						editCredentials("AP Classroom");
-					}
-					deskMan.loginAPClassroom(websites.getLink("AP Classroom"));
-				} else if (name.equals("Pearson's Mastering Biology")) {
-					QuickLinks pearsons = websites.getLink("Pearson's Mastering Biology");
-					if(pearsons.getPassword() == "" || pearsons.getUsername() == "") {
-						editCredentials("Pearson's Mastering Biology");
-					}
-					deskMan.loginPearson(websites.getLink("Pearson's Mastering Biology"));
 				} else {
-					deskMan.openLink(websites.getLink(name));
+					QuickLinks link = websites.getLink(name);
+					if(link.getPassword().equals("") || link.getUsername().equals("")) {
+						editCredentials(link.getName());
+					}else {
+						if (name.equals("AP Classroom")) {
+							deskMan.loginAPClassroom(link);
+						} else if (name.equals("Pearson's Mastering Biology")) {
+							deskMan.loginPearson(link);
+						} else if(name.equals("Skyward Attendance")) {
+							deskMan.openSkywardAttendance(link);
+						} else if(name.equals("Skyward Grades")) {
+							deskMan.openSkywardGrading(link);
+						}else {
+							deskMan.openLink(link);
+						}
+					}
 				}
 			}
 		});
 		f.add(temp);
 	}
-
+  
+  
 	// creating a new link
 	public void createNewLink() {
 		JTextField name = new JTextField(10);
 		JTextField websiteLink = new JTextField(10);
-		JTextField username = new JTextField(10);
-		JTextField password = new JTextField(10);
+		
 
 		JPanel myPanel = new JPanel();
 		myPanel.add(new JLabel("name: "));
@@ -89,17 +81,12 @@ public class GUI {
 		myPanel.add(new JLabel("website link (to login page):"));
 		myPanel.add(websiteLink);
 		myPanel.add(Box.createVerticalStrut(15));
-		myPanel.add(new JLabel("username: "));
-		myPanel.add(username);
-		myPanel.add(Box.createVerticalStrut(15));
-		myPanel.add(new JLabel("password:"));
-		myPanel.add(password);
 
 		// stuff to give to runner:
 		String nameString;
 		String websiteLinkString;
-		String usernameString;
-		String passwordString;
+		String usernameString = "placeholder";
+		String passwordString = "placeholder";
 
 		// where to input stuff for a new link
 		int result = JOptionPane.showConfirmDialog(null, myPanel,
@@ -107,8 +94,6 @@ public class GUI {
 		if (result == JOptionPane.OK_OPTION) {
 			nameString = name.getText();
 			websiteLinkString = websiteLink.getText();
-			usernameString = username.getText();
-			passwordString = password.getText();
 
 		
 //			creates a quicklink to add to linkmanager, then adds the button that was
@@ -116,7 +101,7 @@ public class GUI {
 			if(!NewQuickLink.createNewQuickLink(usernameString, passwordString, websiteLinkString, nameString, websites)){
 				buttonPressed(f, nameString);
 				f.validate();
-			}
+			}			
 		}
 	}
 	
@@ -127,7 +112,7 @@ public class GUI {
 
 		JPanel myPanel = new JPanel();
 		myPanel.add(Box.createVerticalStrut(15));
-		myPanel.add(new JLabel("username: "));
+		myPanel.add(new JLabel("username (make sure to include https://): "));
 		myPanel.add(username);
 		myPanel.add(Box.createVerticalStrut(15));
 		myPanel.add(new JLabel("password:"));
@@ -143,10 +128,16 @@ public class GUI {
 		if (result == JOptionPane.OK_OPTION) {
 			usernameString = username.getText();
 			passwordString = password.getText();
-			websites.addCredentials(name, usernameString, passwordString);
-			
-		}
-		
+			if(name.equals("Skyward Attendance")||name.equals("Skyward Grades")) {
+				websites.addCredentials("Skyward Attendance", usernameString, passwordString);
+				websites.addCredentials("Skyward Grades" , usernameString, passwordString);
 
+			}else {
+				websites.addCredentials(name, usernameString, passwordString);
+			}
+		}
 	}
+	
+	//opening user message to tell the user to enter in anything for the new links, so they don't
+	//have to 
 }
