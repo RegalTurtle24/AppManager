@@ -85,7 +85,7 @@ public class GUI {
 		myPanel.add(new JLabel("name: "));
 		myPanel.add(name);
 		myPanel.add(Box.createVerticalStrut(15));
-		myPanel.add(new JLabel("website link (to login page):"));
+		myPanel.add(new JLabel("website link (make sure to include https://):"));
 		myPanel.add(websiteLink);
 		myPanel.add(Box.createVerticalStrut(15));
 
@@ -119,7 +119,7 @@ public class GUI {
 
 		JPanel myPanel = new JPanel();
 		myPanel.add(Box.createVerticalStrut(15));
-		myPanel.add(new JLabel("username (make sure to include https://): "));
+		myPanel.add(new JLabel("username (to login page): "));
 		myPanel.add(username);
 		myPanel.add(Box.createVerticalStrut(15));
 		myPanel.add(new JLabel("password:"));
