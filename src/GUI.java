@@ -1,6 +1,8 @@
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -17,6 +19,11 @@ public class GUI {
 
 	public void run() {
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.addWindowListener(new WindowAdapter() {
+		    public void windowClosing(WindowEvent e) {
+		        deskMan.killDesktopManager();
+		    }
+		});
 		// stuff here to call sam's class
 		buttonPressed(f, "new link");
 		setPresets(f);
