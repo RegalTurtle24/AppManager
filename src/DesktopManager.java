@@ -191,4 +191,9 @@ public class DesktopManager {
 		}
 	}
 	
+	//Closes chromedriver
+	public void killDesktopManager() {
+		driver.quit();
+	}
+	
 }
